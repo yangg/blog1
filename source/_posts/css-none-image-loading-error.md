@@ -6,7 +6,7 @@ tags:
 - lazyload
 ---
 lazyload 时利用 iconfont 显示加载图片和加载失败效果
-
+<!-- more -->
 ## 效果
 
 ![clipboard.png](http://ww1.sinaimg.cn/large/006tNbRwgw1f4b24oe6zej30iq06rglr)

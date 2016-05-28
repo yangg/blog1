@@ -5,7 +5,7 @@
 # Site
 title: Brook
 subtitle:
-description:
+description: Front end, javascript, css
 author: Brook
 language:
 timezone:
@@ -32,7 +32,7 @@ new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
-filename_case: 0
+filename_case: 1
 render_drafts: false
 post_asset_folder: false
 relative_link: false
@@ -77,4 +77,4 @@ deploy:
 # plugins config
 addlink:
   domain: uedsky.com # the domain of your site
-  before_text: Link # text before the post link
+  before_text: 本文地址： # text before the post link

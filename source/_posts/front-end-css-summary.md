@@ -1,4 +1,4 @@
-layout: blog
+---
 title: 前端常用样式总结
 date: 2016-05-15 12:10:00
 tags:
@@ -13,7 +13,7 @@ Brower support: [flex box(IE 10+)](http://caniuse.com/#search=flex), [:before & 
 
 内容高度不够时，footer 依然显示到最下面
 大概有这样的 html 结构
-
+<!-- more -->
 ```html
 <div id="content">
 </div>
@@ -70,7 +70,7 @@ Brower support: [flex box(IE 10+)](http://caniuse.com/#search=flex), [:before & 
     text-align: center;
   }
   ```
-  [查看 demo](http://codepen.io/yangg/pen/GZLyQE)
+[查看 demo](http://codepen.io/yangg/pen/GZLyQE)
 
 ## absolute center
 不定宽高的垂直水平居中
@@ -145,6 +145,9 @@ html {
 }
 ```
 
+## 多行文字截取
+[-webkit-line-clamp or linear-gradient](http://codepen.io/yangg/pen/mJEVPx)
+
 ---
 以下是针对移动端 (mobile)的
 
@@ -186,7 +189,6 @@ document.body.addEventListener('touchstart', function() {}, false);
 ## smooth scroll in webkit
 
 平滑滚动
-
 ```css
 -webkit-overflow-scrolling: touch;
 ```

@@ -6,7 +6,7 @@
     "version": "3.2.0"
   },
   "scripts": {
-    "upload": "hexo deploy --generate"
+    "test": "hexo deploy --generate"
   },
   "dependencies": {
     "hexo": "^3.1.1",
