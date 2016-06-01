@@ -77,4 +77,5 @@ deploy:
 # plugins config
 addlink:
   domain: uedsky.com # the domain of your site
-  before_text: 本文地址： # text before the post link
+  before_text: "> 原文地址：" # text before the post link
+  after_text: "\n获取最佳阅读体验并参与讨论，请访问原文"
