@@ -1,6 +1,9 @@
 
-// polyfill document.scrollingElement
-// https://github.com/mathiasbynens/document.scrollingElement
+/**
+ * polyfill document.scrollingElement
+ * author: Brook <uedsky@gmail.com>
+ * https://github.com/mathiasbynens/document.scrollingElement
+ */
 if(!document.scrollingElement) (function() {
   var element = null;
   function scrollingElement() {

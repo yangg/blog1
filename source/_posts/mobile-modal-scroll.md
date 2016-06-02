@@ -1,5 +1,5 @@
 ---
-title: 解决移动端滚动穿透问题
+title: 移动端滚动穿透问题完美解决方案
 date: 2016-06-01 21:08:26
 tags:
 - javascript
@@ -46,10 +46,15 @@ body.modal-open {
 ```
 如果只是上面的 css，滚动条的位置同样会丢失
 所以如果需要保持滚动条的位置需要用 js 保存滚动条位置关闭的时候还原滚动位置
+这样上面3个缺点都解决了，至此滚动穿透就**完美解决**了
 
 [完整的示例](/demo/modal-scroll.html)
 
+## document.scrollingElement
+因为浏览器获取和设置 scrollTop 存在兼容性，为了简化上面的示例，我直接使用了 document.scrollingElement，对于不支持的浏览器我写了个 [polyfill document.scrollingElement.js](/demo/polyfills/document.scrollingElement.js)
+
 ## 参考
 * https://github.com/twbs/bootstrap/issues/15852
+* https://imququ.com/post/document-scrollingelement-in-chrome.html
 * https://github.com/mathiasbynens/document.scrollingElement
 * https://segmentfault.com/q/1010000002942948
