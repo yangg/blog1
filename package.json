@@ -6,7 +6,8 @@
     "version": "3.2.0"
   },
   "scripts": {
-    "test": "hexo deploy --generate"
+    "test": "hexo deploy --generate",
+    "reload": "cd themes/even && gulp less && cd - && hexo g"
   },
   "dependencies": {
     "hexo": "^3.1.1",

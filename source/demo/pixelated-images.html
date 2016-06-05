@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>pixelated images</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+img {
+  width: 300px; height: 300;
+}
+.pixelate img { image-rendering: pixelated; }
+</style>
+</head>
+<body>
+  <div><label><input type="checkbox" checked id="toggle_pixelate"/> pixelate ( image-rendering: pixelated; )</label></div>
+  <div id="wrap" class="pixelate">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAFElEQVQIHWP4z8DwHwyBNJDN8B8AQNEG+t5Ik2kAAAAASUVORK5CYII=">
+    <img src="https://goo.gl/nWBBg.qr">
+  </div>
+<script>
+(function() {
+  // https://developers.google.com/web/updates/2015/01/pixelated
+  var toggle = document.querySelector('#toggle_pixelate');
+  toggle.onchange = function() {
+    var wrap = document.querySelector('#wrap');
+    if(this.checked) {
+      wrap.classList.add('pixelate');
+    } else {
+      wrap.classList.remove('pixelate');
+    }
+  }
+})();
+  </script>
+</body>
+</html>

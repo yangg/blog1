@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>smooth scroll</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+  <div style="height:800px" id="floor1">
+  Floor 1
+  <a href="#floor2">Goto Floor 2</a>
+  </div>
+  <div style="height:800px" id="floor2">
+    Foor 2
+    <a href="#floor1">Goto Floor 1</a>
+  </div>
+  </div>
+<script>
+(function() {
+  // http://thenewcode.com/507/Smooth-Page-Scroll-in-5-Lines-of-JavaScript
+  var anchors = document.querySelectorAll('a[href^="#"]');
+  if(0 && window.scrollTo.length != 2) {
+    [].slice.call(anchors).forEach(function(anchor) {
+      anchor.onclick = function(e) {
+          e.preventDefault();
+          var offsetTop = document.querySelector(this.getAttribute('href')).offsetTop;
+          // window.scrollTo({behavior: "smooth", top: offsetTop});
+          /**
+           * ```css
+           * body { scroll-behavior: smooth; }
+           * ```
+           */
+          window.scrollTo(0, offsetTop);
+      }
+    });
+  }
+})();
+  </script>
+</body>
+</html>
