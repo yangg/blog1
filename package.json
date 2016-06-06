@@ -7,7 +7,8 @@
   },
   "scripts": {
     "test": "hexo deploy --generate",
-    "reload": "cd themes/even && gulp less && cd - && hexo g"
+    "reload": "cd themes/even && gulp less && cd - && hexo g",
+    "deploy": "hexo clean && hexo deploy --generate"
   },
   "dependencies": {
     "hexo": "^3.1.1",
