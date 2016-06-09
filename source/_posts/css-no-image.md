@@ -6,9 +6,9 @@ tags:
 - css3
 ---
 ## 预览
-![jagged border](http://ww1.sinaimg.cn/large/006tNbRwgw1f4bcew5hs4j31bk09adgv)
+![jagged border](//ww1.sinaimg.cn/large/006tNbRwgw1f4bcew5hs4j31bk09adgv)
 动态移动边框
-![动态移动边框](http://7xsffj.com1.z0.glb.clouddn.com/img%2Fborder.gif)
+![动态移动边框](//o8hio0x77.qnssl.com/img%2Fborder.gif)
 <!-- more -->
 ## 锯齿边框 - background
 首先我们重复135度的白色背景，可以得到下面的
@@ -66,7 +66,7 @@ tags:
 ```
 
 调整各边框的宽度可以得到[更多下面这种形状](http://nicolasgallagher.com/pure-css-speech-bubbles/demo/)
-![](http://ww1.sinaimg.cn/large/006tNbRwgw1f4bht8umajj30fw084dgg)
+![](//ww1.sinaimg.cn/large/006tNbRwgw1f4bht8umajj30fw084dgg)
 
 
 ## 小箭头 - transform
@@ -86,11 +86,11 @@ tags:
 ```
 
 再加上 border-radius 也可以做出下面这种[圆角箭头按钮](http://codepen.io/yangg/pen/VLwyeY)
-[![](http://ww3.sinaimg.cn/large/006tNbRwgw1f4fcgceewdj304w01kdfq)](http://codepen.io/yangg/pen/VLwyeY)
+[![](//ww3.sinaimg.cn/large/006tNbRwgw1f4fcgceewdj304w01kdfq)](http://codepen.io/yangg/pen/VLwyeY)
 
 ## Image Placeholder - :before
 见另一篇文章 {% post_link "css-none-image-loading-error" %}
 
 ## 投影效果 - :before + box-shadow
-![](http://ww1.sinaimg.cn/large/006tNbRwgw1f4bhw8966hj30ys0hegmo)
+![](//ww1.sinaimg.cn/large/006tNbRwgw1f4bhw8966hj30ys0hegmo)
 See [CSS drop-shadows without images](http://nicolasgallagher.com/css-drop-shadows-without-images/demo/)

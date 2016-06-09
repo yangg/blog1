@@ -1,20 +1,19 @@
 ---
-title: CSS 无图片显示加载(&失败)效果
+title: CSS :after 显示加载&失败效果
 date: 2016-05-12 13:55:34
 tags:
 - css
 - lazyload
 ---
-lazyload 时利用 iconfont 显示加载图片和加载失败效果
+lazyload 时利用 :after 显示加载效果和加载失败效果
 <!-- more -->
 ## 效果
 
-![clipboard.png](http://ww1.sinaimg.cn/large/006tNbRwgw1f4b24oe6zej30iq06rglr)
+![clipboard.png](//ww1.sinaimg.cn/large/006tNbRwgw1f4b24oe6zej30iq06rglr)
 
 [查看demo](http://codepen.io/yangg/pen/bpJayx/)
 
-## 显示加载中或者品牌图
-可以是文字或者 iconfont, 并将图标显示到正中间
+## 显示加载效果（文字，iconfont 或背景图）到正中间
 HTML 结构如下：
 ```html
 <a href="javascript:" class="img-wrap img-placeholder">
@@ -52,4 +51,4 @@ HTML 结构如下：
 
 ## 参考
 * SCSS 部分使用了 http://bourbon.io/
-* [直接使用 img:after，兼容性不好](https://bitsofco.de/styling-broken-images/) 
+* [直接使用 img:after 显示加载错误错要（兼容性不好）](https://bitsofco.de/styling-broken-images/)

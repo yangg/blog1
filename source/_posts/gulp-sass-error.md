@@ -8,7 +8,7 @@ tags:
 ---
 ## 错误显示
 
-![clipboard.png](http://ww4.sinaimg.cn/large/006tNbRwgw1f4b8q7jf5gj30dq056mxm)
+![clipboard.png](//ww4.sinaimg.cn/large/006tNbRwgw1f4b8q7jf5gj30dq056mxm)
 
 ## sass 或 less 编译出错后不退出
 需要监听 sass 的`error`事件
