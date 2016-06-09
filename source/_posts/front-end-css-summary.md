@@ -181,7 +181,7 @@ document.body.addEventListener('touchstart', function() {}, false);
 ## Cells
 移动端常用的 cells 布局
 
-![](//ww3.sinaimg.cn/large/006tNbRwgw1f4b1tev5v8j30ci0m8ab3)
+![](https://o8hio0x77.qnssl.com/i/2016-06-09_12:37:31.jpg)
 
 [查看微信我页面 demo (cell + tap highlight + half pixel border)](http://codepen.io/yangg/pen/bpJxyj)
 
