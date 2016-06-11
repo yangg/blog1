@@ -4,6 +4,7 @@ date: 2016-06-09 16:15:36
 tags:
 - travis-ci
 - deploy
+- 博客
 ---
 
 ## 前言
@@ -45,6 +46,6 @@ addons:
 [完整的.travis.yml 配置](https://github.com/yangg/blog/blob/master/.travis.yml)
 
 ## 参考
-https://docs.travis-ci.com/user/encrypting-files/
-http://blog.acwong.org/2016/03/20/auto-deploy-hexo-with-travis-CI/
+* https://docs.travis-ci.com/user/encrypting-files/
+* http://blog.acwong.org/2016/03/20/auto-deploy-hexo-with-travis-CI/
 

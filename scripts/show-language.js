@@ -11,7 +11,9 @@ function getLang(lang) {
         svg: "SVG",
         mathml: "MathML",
         plain: "Text",
-        php: "PHP"
+        php: "PHP",
+        yaml: "YAML",
+        yml: "YAML"
     };
     // to ucfirst
     return langMaps[lang] || (lang.substr(0, 1).toUpperCase() + lang.substr(1));

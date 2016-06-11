@@ -76,7 +76,4 @@ deploy:
   root: /var/www/blog
 
 # plugins config
-addlink:
-  domain: uedsky.com # the domain of your site
-  before_text: "> 原文地址：" # text before the post link
-  after_text: "\n获取最佳阅读体验并参与讨论，请访问原文"
+postscript: "> 原文地址：[${post.permalink}](${post.permalink})\n获取最佳阅读体验并参与[讨论](${post.permalink}#comments)，请访问原文"
