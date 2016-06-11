@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>图片放大效果</title>
+    <meta name="author" content="sohighthesky"/>
+    <meta name="description" content="图片放大效果,图片放大镜,京东商品展示效果">
+    <meta name="Keywords" content="图片放大效果,图片放大镜,京东商品展示效果,商品展示,zooming">
+    <style type="text/css">
+/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:11pt/1.8 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
+	
+	.test {	margin:50px auto; width:600px;color:#474747;}
+	.test h3{ margin:10px auto;}
+	
+	.test dt {line-height:25px;margin-top:5px;}
+	
+	.cla {border:solid 5px #9A9899;}
+	
+	textarea[code] {width:700px;height:300px;display:block;}
+    </style>
+</head>
+<body>
+	<div id="div1" class="test">
+	    <h3>图片放大效果（几个参数分别演示：）</h3>
+	    <h3><a href="/" title="uedsky.com">返回博客首页</a></h3>
+	    <dl>
+	        <dt>1.图片和放大使用不同的图片（大小图片要比例相同）<br />也可以指定放大倍数（相对于小图片计算）
+<textarea code="js:norun">
+new imageZoom("img1",{
+    //mul:6,//指定放大的倍数
+    bigImg:"https://o8hio0x77.qnssl.com/i/2016-06-11_tong.jpg",//指定放大图片路径
+    viewerPos:{h:-10,v:0},//显示到指定位置(默认{h:10,v:0},要设置就必须都一起设置))，h:-10表示左边偏移10像素
+    onShow:function() {
+        document.title="show,you are moving on the image.";
+    },
+    onHide:function() {
+        document.title="you mouse move out the image";
+    }
+});
+</textarea>
+	        </dt>
+	        <dd>
+	            <img id="img1" src="https://o8hio0x77.qnssl.com/i/2016-06-11_tong_s.jpg" alt="彤彤"/>
+	        </dd>
+	        <dt>2.使用同一图片<br/>
+	        给小图片设定宽或高，这里指定了:style="height:300px;" ，(偷懒模式，^o^,后面几个也是这个）
+<textarea code="js:norun">
+new imageZoom("dd2",{//第一个参数指定一个图片或者其id（也可以为图片的容器或者id,容器中第一个子元素要为图片）
+    //mul:3
+});
+</textarea>       
+	        </dt>
+	        <dd id="dd2">
+	            <img id="img2" style="height:300px;" src="https://o8hio0x77.qnssl.com/i/2016-06-11_avril1.jpg" alt="avril"/>
+	        </dd>
+	        <dd id="info"></dd>
+	        <dt>3.放大图片显示到指定的容器中
+<textarea code="js:norun">
+new imageZoom("img3",{
+    viewer:"imgshow"//指定要显示的div或者其id
+})
+</textarea>       
+	        </dt>
+	        <dd>
+	            <img id="img3" style="height:200px;" src="https://o8hio0x77.qnssl.com/i/2016-06-11_wanx.jpg" alt="王心凌" />
+	        </dd>
+	        <dd>图片预览：
+	            <div id="imgshow" style="width:534px;height:400px"></div>
+	        </dd>
+	        <dt>4.显示大图的div以指定倍数
+<textarea code="js:norun">
+new imageZoom("img4",{
+    mul:5,//放大5倍
+    viewerCla:"cla",
+    viewerPos:{h:10,v:-1},
+    viewerMul:1.2//展示层以小图片的1.2倍大小
+});
+</textarea>
+	        </dt>
+	        <dd>
+	            <img id="img4" style="height:260px" src="https://o8hio0x77.qnssl.com/i/2016-06-11_。。。.jpg" alt="" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	        </dd>
+	    </dl>
+	</div>
+</body>
+<script type="text/javascript" src="imageZoom.js"></script>
+<script type="text/javascript">
+window.onload=function() {
+	new imageZoom("img1",{
+		//mul:6,//指定放大的倍数
+		bigImg:"https://o8hio0x77.qnssl.com/i/2016-06-11_tong.jpg",//指定放大图片路径
+		viewerPos:{h:-10},//显示到指定位置(默认值为：{h:10,v:0})，h:-10表示左边偏移10像素
+		onShow:function() {
+			document.title="show,you are moving on the image.";
+		},
+		onHide:function() {
+			document.title="you mouse move out the image";
+		}
+	});
+	new imageZoom("dd2",{//第一个参数指定一个图片或者其id（也可以为图片的容器或者id,容器中第一个子元素要为图片）
+		//mul:3
+	});
+	new imageZoom("img3",{
+		viewer:"imgshow"//指定要显示的div或者其id
+	});
+	new imageZoom("img4",{
+		mul:5,//放大5倍
+		viewerCla:"cla",
+		viewerPos:{h:2,v:-1},
+		viewerMul:1.2//展示层以小图片的1.2倍大小
+	});
+}
+</script>
+<script type="text/javascript" src="highlight.js" defer="defer"></script>
+</html>

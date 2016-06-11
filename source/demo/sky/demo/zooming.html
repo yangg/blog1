@@ -1,0 +1,68 @@
+<!doctype html>
+<head>
+<meta charset="utf-8"/>
+    <title>完全兼容鼠标滚动缩放图片</title>    
+    <meta name="description" content="完全兼容的鼠标滚动缩放图片，兼容各大浏览器，包括 ie6"/>
+    <meta name="Keywords" content="鼠标滚动缩放图片，兼容IE,FF,Chrome,Safari,Opera,前端,onmousewheel,DOMMouseScroll"/>
+    <style>
+/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:11pt/1.8 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
+
+    #div1 {width:600px;margin:100px auto;height:2000px;}
+    </style>
+</head>
+<div id="div1">
+<h3>完全兼容的鼠标滚动缩放图片</h3>
+<div>
+1.鼠标滚轴事件，Firefox使用DOMMouseScroll，非firefox用onmousewheel<br/>
+2.IE中使用e.wheelDelta获取数组滚动数据，而非IE中使用e.detail，且数据的值相差-40倍<br/>
+3.鼠标滚动时默认会调用浏览器窗口的滚动事件，所以需要使用e.preventDefault()阻止默认行为，但是firefox3.6需要额外的使用e.stopPropagation()才能阻止滚动事件
+</div>
+<img src="https://o8hio0x77.qnssl.com/i/2016-06-11_smilegirl.jpg" id="testimg1"/>
+<div>默认最小缩放为原图片的50%</div>
+<div><a href="/">返回博客首页</a></div>
+</div>
+</body>
+<script type="text/javascript">
+(function(){
+/*!
+ *Author:sohighthesky
+ *Website:/web/20110920035912/http://www.uedsky.com
+ *Date:2010-2-4
+ */
+var zooming=function(e){
+    e=window.event ||e;
+    var o=this,data=e.wheelDelta || -e.detail*40,zoom,size;//FF的e.detail跟wheelDelta是相反的
+    if(!+'\v1'){//IE
+        zoom = parseInt(o.style.zoom) || 100; 
+        zoom += data / 12;
+        if(zoom > zooming.min) 
+            o.style.zoom = zoom + '%';
+        e.returnValue=false;
+    }else {
+        size=o.getAttribute("_zoomsize").split(",");
+        zoom=parseInt(o.getAttribute("_zoom")) ||100;
+        zoom+=data/12;
+        if(zoom>zooming.min){
+            o.setAttribute("_zoom",zoom);
+            o.style.width=size[0]*zoom/100+"px";
+            o.style.height=size[1]*zoom/100+"px";
+        }
+        e.preventDefault();//阻止默认行为
+        e.stopPropagation();//for firefox3.6
+    }
+};
+zooming.add=function(obj,min){//第一个参数指定可以缩放的图片，min指定最小缩放的大小 ,default to 50
+    zooming.min=min || 50;
+    obj.onmousewheel=zooming;
+    if(/Firefox/.test(navigator.userAgent))//if Firefox
+        obj.addEventListener("DOMMouseScroll",zooming,false);
+    if(!!+'\v1'){//if not IE
+        obj.setAttribute("_zoomsize",obj.offsetWidth+","+obj.offsetHeight);
+    }
+};
+
+window.onload=function(){//放在onload中，否则非ie中会无法计算图片大小出错
+    zooming.add(document.getElementById("testimg1"));
+}
+})()
+</script>

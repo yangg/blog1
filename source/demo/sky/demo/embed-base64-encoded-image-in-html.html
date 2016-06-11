@@ -1,0 +1,131 @@
+<!doctype html>
+<head>
+<meta charset="utf-8"/>
+<title>HTML中嵌入图片</title>
+<meta name="description" content="HTML中嵌入图片，兼容ie6/7"/><!--[if]5/6/2010-->
+<meta name="keywords" content="嵌入图片,embed,base64 encoded data,image, in html,javascript"/>
+<style>
+/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:11pt/1.8 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
+
+pre  {background:none repeat scroll 0 0 #FDFDDF;border:1px dashed #CCCCCC;color:#009900;
+font-family:Tahoma,Geneva,sans-serif;font-size:13px;margin:8px auto;overflow:auto;
+padding:4px 4px 4px 10px;width:85%;word-wrap:break-word;}
+</style>
+</head>
+<body>
+</head>
+<body>
+<div style="width:600px;margin:50px auto 0;">
+<h3>在HTML中嵌入图片 <a href="/">返回博客首页</a></h3>
+<p>
+在HTML中嵌入base64 编码的图片，<br/>
+兼容ie6/7: 参考mht文件处理方法，采用mhtml协议<br/>
+处理IE8: 数据大于32kb的情况，同IE6/7<br/>
+(The size limit for DataURIs has been lifted from 32 kilobytes (KB) in Internet Explorer 8 to 4 gigabytes (GB) in Internet Explorer Platform Preview.)<br/>
+其它浏览器包括(Firefox,Chrome,Safari,Opera)<br/>
+效果：
+</p>
+    <img id="imgYahooIcon" />
+    <img id="imgGmail" />
+    <img id="imgStar" />
+<br/>好处：减少http请求，加快网页加载速度
+    
+    <br/>You can View source to see the code.
+    <br/> <a href="/">返回博客首页</a>
+    <pre>
+/*
+ *reference:
+ *http://topic.csdn.net/u/20100127/14/a961df9a-34a1-44f1-9f9a-c10a4d168736.html#rbody_63091898
+ *
+ *kw:ie 8 base64 image limit
+ *(IE8 betas limit it to 32kB of data.Seems the limit in Firefox 3.6 is 600KB.)
+ *http://msdn.microsoft.com/en-us/library/cc848897(VS.85).aspx
+ *http://stackoverflow.com/questions/695151/data-protocol-url-size-limitations
+ *http://pennysmalls.com/2009/09/23/fastimageinline-inline-images-in-your-html-code/
+ */
+    </pre>
+</div>
+<xmp id="mthmlCodes" style="display:none;">
+Content-Type: multipart/related; boundary="[MHTML_EMBED_CODE]"
+
+--[MHTML_EMBED_CODE]
+Content-Location: imgYahooIcon
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+
+R0lGODlhEAAQALMAAP//////AP8A//8AAAD//wD/AAAA/wAAAP8mJv4nJ/0oKKWlpf///wAA
+AAAAAAAAACH5BAEAAAwALAAAAAAQABAAAAQ3kMlJq70465w66om2JN+yMMjnpZPaJqfbst2J
+wlWaKLZuU6VJ7RKc/IQdhZKxu5ietuNmSt1EAAA7
+
+--[MHTML_EMBED_CODE]
+Content-Location: imgGmail
+Content-Type: image/jpeg
+Content-Transfer-Encoding: base64
+
+R0lGODlhEAAQAPcAAP//////zP//mf//Zv//M///AP/M///MzP/Mmf/MZv/MM//MAP+Z//+Z
+zP+Zmf+ZZv+ZM/+ZAP9m//9mzP9mmf9mZv9mM/9mAP8z//8zzP8zmf8zZv8zM/8zAP8A//8A
+zP8Amf8AZv8AM/8AAMz//8z/zMz/mcz/Zsz/M8z/AMzM/8zMzMzMmczMZszMM8zMAMyZ/8yZ
+zMyZmcyZZsyZM8yZAMxm/8xmzMxmmcxmZsxmM8xmAMwz/8wzzMwzmcwzZswzM8wzAMwA/8wA
+zMwAmcwAZswAM8wAAJn//5n/zJn/mZn/Zpn/M5n/AJnM/5nMzJnMmZnMZpnMM5nMAJmZ/5mZ
+zJmZmZmZZpmZM5mZAJlm/5lmzJlmmZlmZplmM5lmAJkz/5kzzJkzmZkzZpkzM5kzAJkA/5kA
+zJkAmZkAZpkAM5kAAGb//2b/zGb/mWb/Zmb/M2b/AGbM/2bMzGbMmWbMZmbMM2bMAGaZ/2aZ
+zGaZmWaZZmaZM2aZAGZm/2ZmzGZmmWZmZmZmM2ZmAGYz/2YzzGYzmWYzZmYzM2YzAGYA/2YA
+zGYAmWYAZmYAM2YAADP//zP/zDP/mTP/ZjP/MzP/ADPM/zPMzDPMmTPMZjPMMzPMADOZ/zOZ
+zDOZmTOZZjOZMzOZADNm/zNmzDNmmTNmZjNmMzNmADMz/zMzzDMzmTMzZjMzMzMzADMA/zMA
+zDMAmTMAZjMAMzMAAAD//wD/zAD/mQD/ZgD/MwD/AADM/wDMzADMmQDMZgDMMwDMAACZ/wCZ
+zACZmQCZZgCZMwCZAABm/wBmzABmmQBmZgBmMwBmAAAz/wAzzAAzmQAzZgAzMwAzAAAA/wAA
+zAAAmQAAZgAAMwAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAANgALAAAAAAQABAAAAhhALEJHEiwoMGD
+CBMOBMLQgcOHEBlKZHgAgMWLByY2zAGkIkYgORxMBOCAo8eMIQGMJGkSpQOLKw+UZBjS40iZ
+MnPUdFBxIk6LDi3inMjzolEAMn0ePZpRIsSnDxkqnDo1IAA7
+
+--[MHTML_EMBED_CODE]
+Content-Location: imgStar
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+
+R0lGODlhDwAsAOYAAPJoSPhyXLi4uOXl5f/u4dnZ2d/f38jIyMnJyf/IntLS0vPz87Kysqio
+qP/48aenp8DAwP/Nqf65kNvb2+Dg4M7Ozvqfjf20j//ZuLy8vP/PrOLi4v/LoPiHcP/+/unp
+6aSkpKysrP3MvvzGu//39v/bu/ymg/2zi5qamqWlpfiIcvu0nvX19fmRfPuif5aWlpubm9zc
+3NXV1f/SrvqYePukh/unlP708v7Kp/7h1P2vif3Vx/mWgsrKyv3h2/7DmJWVlfqhj/yjgJiY
+mMXFxa+vr/n5+Z6env/9/fmOcejo6JycnPb29v7i1fuce/mJburq6q2trfqSdPude8HBwfzB
+tvqvn/vBqPqXd/u7r7a2tv23kL+/v5OTk/qWd/uefP7l4fmLcLW1tf7x797e3szMzP/Bovuh
+fv3Vzf/8+/qTdf2uh/yphP/GnPyog//dw//r3//06v/HnvykgPzDtPh/Z/7+/v///wAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAACwAAAAADwAsAAAH/4B2goN2BISHhA4liIwYHIaMgwQzPzge
+kXYeEQkSJ02HGCUcGgkREmtuZzUrVyIicXKkZhcXLk5edWEBVoJwWzpCc1NYdXUAAUFpgzkm
+XzRSxQAAPCSHO2pJdQHSAWOIdE/a3HU3iDbG43VgiC0AdRZZHcVoiB0WPoIOVSojg3f/AAMK
+HEiwoMGDCBMqXMiwocOHECNKNMhIACZCGxhcHNSgAZmNMcRQeLARxIY7AgocUpAhw4MuEP4N
+ELCEwYGbSl7IgDKQhQEqFu0YADKAYI8QhAoIGIgAxKEFXBQIPLLgKQSpAWEwOfSBgYE7A8oY
+udPgw6EJKQqEQEChCBEtEw4OVRgSZYAgJAhQVBgUCAA7
+
+--[MHTML_EMBED_CODE]
+</xmp>
+</body>
+<script>
+/*!
+ *Author:sohighthesky
+ *Website:/web/20130601010817/http://www.uedsky.com
+ *Date:2010-5-6
+ */
+(function(){
+var emp={},$=function(id){return document.getElementById(id)||emp},//avoid error when cannot find the element by id
+codes=$("mthmlCodes").innerHTML,
+isIE67=window.ActiveXObject && !window.XDomainRequest,
+setEmbedImageSrc=function(imgID,contentType,data){//set image src
+    if(isIE67 || (window.XDomainRequest && data.length>32*1024)){//for ie6/7 or the data size is longer than 32k bytes in ie8
+        $(imgID).src='mhtml:'+document.location.href+'!'+imgID;
+    }else {
+        $(imgID).src="data:"+contentType+";base64,"+data;
+    }
+},
+reg=isIE67?/\s+Content-Location\s*:\s*([^\s]+)\s+/ig:
+/Content-Location\s*:\s*([^\s]+)\s+Content-Type\s*:\s*([^\s]+)\s+Content-Transfer-Encoding\s*: \s*base64\s+([\S\s]*?)(\n|\r\n){2,}/ig,
+matcher,
+i=0;
+while((matcher=reg.exec(codes))!==null){
+    setEmbedImageSrc(matcher[1],matcher[2],matcher[3]);
+}
+})();
+</script>
+</html>

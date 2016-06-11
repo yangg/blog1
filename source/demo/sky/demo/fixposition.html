@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>固定元素位置</title>
+    <meta name="Keywords" content="浮动定位,跨浏览器,fixed,ie6" />
+    <style type="text/css">
+      body,th,td    {font-size:10pt;font-family:Tahoma,Arial,'\5b8b\4f53','\5FAE\8F6F\96C5\9ED1';}
+      a  	{color:#3366CC; text-decoration:none;}
+    #div1 div {
+		width:300px;
+		height:140px;
+		border:solid 1px #0066CC;
+		text-align:center;
+		vertical-align:middle;
+		line-height:1.8;
+    }
+    </style>
+</head>
+<body>
+	<div id="div1" style="height:2000px;width:2000px">
+	<div pos="cc"><a href="/" title="uedsky.com">返回博客首页</a><br/>
+	Date:2009-11-1(这个文章是ie6时代，现在浏览器都支持position:fixed)
+	</div>
+	<div pos="lt">左上角</div>
+	<div pos="ct">上边	</div>
+	<div pos="rt">右上角	</div>
+	<div pos="lc">左边</div>
+	<div pos="rc">右边</div>
+	<div pos="lb">左下角</div>
+	<div pos="cb">下边</div>
+	<div pos="rb">右下角</div>
+	<div>自定义位置1:{left:60,top:160}</div>
+	<div>自定义位置2:{right:200,bottom:50}</div>
+	</div>
+</body>
+<script type="text/javascript" src="fixPosition.js"></script>
+<script type="text/javascript">
+var divs=document.getElementById("div1").getElementsByTagName("div");
+var length=divs.length;
+for(var i=0;i<length-2;i++) {
+	var cur=divs[i];
+	new fixPosition(cur,cur.getAttribute("pos"));
+}
+new fixPosition(divs[length-2],{left:60,top:160});
+new fixPosition(divs[length-1],{right:200,bottom:50});
+</script>
+</html>

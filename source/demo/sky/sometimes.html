@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Javascript 各种编码转换</title>
+    <meta charset="utf-8"/>
+    <meta name="author" content="sohighthesky"/>
+    <meta name="Description" content="收集的js或html" />
+    <meta name="Keywords" content="js或html" />
+    <style type="text/css">
+    /*pre css reset*/
+    body,th,td,pre    {font-size:12px;font-family:Tahoma,'\5b8b\4f53';}
+    body,th,td,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p  {margin:0;padding:0;}
+    fieldset,img { border:none; }
+    a {color:#3366CC; text-decoration:none;outline:none;}
+    a:hover 	{color:#FF6600;text-decoration:underline;}
+    /*css reset end*/
+    /*some styles*/
+    .line_pink {background:transparent url(images/resource/line_pink.gif) repeat-x scroll 0 120%;padding:0 2px 3px;}
+    .line_orange {background:transparent url(images/resource/line_orange.gif) repeat-x scroll 0 120%;padding:0 3px 3px;}
+    .text_en {line-height:1.7;font-size:14px;font-family:Verdana;}/*for English Text*/
+    
+   textarea[code] {width:700px;height:300px;display:block;border:solid 1px #CCCCCC;}/*还未加载code样式时显示*/
+   #div1 {width:800px;margin:10px auto;line-height:23px;}
+   
+   .list1 li{list-style-type:none;}
+   .list1 li .title {line-height:23px;margin:8px 0 5px;font-weight: bold;font-size:13px;}
+   .list1 li .title pre {font-weight: normal;}
+   
+   .tarea1 {border:solid 1px #CCCCCC;width:500px;height:100px;}
+   .tarea2 {border:solid 1px #CCCCCC;width:500px;height:130px;}
+    </style>
+</head>
+<body>
+	<div id="div1">
+        <h3 style="font-size:15px">Javascript 各种编码转换</h3>
+        <div style="line-height:30px;height:30px">
+        返回<a href="/">我的博客首页</a>
+        </div>
+<ul class="list1" id="list1">
+<li><div class="title">获取当前script文件的路径</div>
+<textarea code="js:norun">
+var strJsPath='';
+(function(){
+    try {
+        throw Error("获取路径")
+    }catch(ex){
+        if(ex.fileName)//Firefox
+            strJsPath=ex.fileName
+        else if(ex.stack)//Chrome
+            strJsPath=(ex.stack.match(/at\s+(.*?):\d+:\d+/)||['',''])[1];
+        else if(ex.sourceURL)//Safari
+            strJsPath=ex.sourceURL 
+    }
+    if(strJsPath)return; //其实所有浏览器都可以用下面的
+    var scripts=document.getElementsByTagName("script"),script=scripts[scripts.length-1];
+    strJsPath=document.querySelector?script.src:script.getAttribute("src",4)//IE8直接.src
+})()
+alert(strJsPath)
+</textarea>
+参考文章：<a href="http://www.cnblogs.com/rubylouvre/archive/2010/04/06/1705817.html">获得当前javascript文件所在的路径 </a>
+</li>
+<li><div class="title">获取当前script中的参数</div><!--2010-01-21-->
+<textarea code="js:norun">
+var getScriptArgs=function(){//获取多个参数
+    var scripts=document.getElementsByTagName("script"),
+    script=scripts[scripts.length-1],//因为当前dom加载时后面的script标签还未加载，所以最后一个就是当前的script
+    src=script.src,
+    reg=/(?:\?|&)(.*?)=(.*?)(?=&|$)/g,
+    temp,res={};
+    while((temp=reg.exec(src))!=null) res[temp[1]]=decodeURIComponent(temp[2]);
+    return res;
+};
+var args=getScriptArgs();
+alert(args.a+" | "+args.b+" | "+args.c);
+//假如上面的js是在这个js1.js的脚本中< script type="text/javascript" src="js1.js?a=abc&b=汉字&c=123">< /script>
+
+var getScriptArg=function(key){//获取单个参数
+    var scripts=document.getElementsByTagName("script"),
+    script=scripts[scripts.length-1],
+    src=script.src;
+    return (src.match(new RegExp("(?:\\?|&)"+key+"=(.*?)(?=&|$)"))||['',null])[1];
+};
+alert(getScriptArg("c"));
+</textarea>
+</li>
+<li><div class="title">escape,encodeURI,encodeURIComponent编码</div><!--2009-12-26-->
+<textarea class="tarea1" id="txt0912261">思怡</textarea><br/>
+<input type="checkbox" id="chkescape" checked="checked"/><label for="chkescape">escape</label>
+<input type="checkbox" id="chkencode1"/><label for="chkencode1">encodeURI</label>
+<input type="checkbox" id="chkencode2"/><label for="chkencode2">encodeURIComponent</label><br/>
+<textarea class="tarea2" id="txt0912262"></textarea>
+<script type="text/javascript">
+(function(){
+    var $=function(id){return typeof(id)==="string"?document.getElementById(id):id};
+    $("txt0912261").onkeyup=$("txt0912261").onclick=function() {
+        var source=this.value;
+        if($("chkescape").checked)source=escape(source);
+        if($("chkencode1").checked)source=encodeURI(source);
+        if($("chkencode2").checked)source=encodeURIComponent(source);
+        $("txt0912262").value=source;
+    };
+    $("txt0912262").onkeyup=$("txt0912262").onclick=function() {
+        var data=this.value;
+        if($("chkescape").checked)data=unescape(data);
+        if($("chkencode1").checked)data=decodeURI(data);
+        if($("chkencode2").checked)data=decodeURIComponent(data);
+        $("txt0912261").value=data;
+    };
+})();
+</script>
+</li>
+<!--[if IE]>
+<li><div class="title">gb2312编码转换(2009-12-20)</div>
+<textarea class="tarea1" id="txtutf8">我心依旧(my heart will go on.)</textarea><br/>
+<input type="button" value="Encode ↓ " id="btngbEncode"/><input id="btngbDecode" type="button" value="Decode ↑ "/><br/>
+<textarea class="tarea2" id="txtgb2312"></textarea>
+<script type="text/javascript" src="jquery/UrlEncode2.js"></script>
+<script type="text/vbscript">
+Function str2asc(strstr) 
+str2asc = hex(asc(strstr)) 
+End Function 
+Function asc2str(ascasc) 
+asc2str = chr(ascasc) 
+End Function
+</script>
+<script type="text/javascript">
+(function(){
+    var $=function(id){return document.getElementById(id)};
+    $("btngbEncode").onclick=function() {
+        $("txtgb2312").value=UrlEncode($("txtutf8").value);
+    };
+    $("btngbDecode").onclick=function() {
+        $("txtutf8").value=UrlDecode($("txtgb2312").value);
+    };
+})();
+</script>
+</li>
+<![endif]-->
+<li><div class="title">转换为gb2312编码</div><!--2009-12-18-->
+<textarea code="html">
+<input type="text" id="txtUtf8" value="我心依旧(my heart will go on.)" style="width:600px;"/><br/>
+<input type="text" id="txtGb2312" style="width:600px;"/>
+<script type="text/javascript">
+var addScript=function(file,callBack) {
+    var script=document.createElement("script");
+    script.type="text/javascript"; script.src=file;
+    document.getElementsByTagName("head")[0].appendChild(script);
+    if(!+'\v1') {
+        script.onreadystatechange=function() {if(/loaded|complete/.test(script.readyState))callBack();}
+    } else script.onload=callBack;
+}
+
+addScript("http://dl.dropbox.com/u/2555620/jquery/UrlEncode.js",function() {
+    var $=function(id){return document.getElementById(id)};
+    alert(getSpell($("txtUtf8").value));
+    $("txtGb2312").value=UrlEncode($("txtUtf8").value);
+});
+</script>
+</textarea>
+</li>
+<li><div class="title">RGB & Hex color Convert</div> <!--2009-12-13-->
+<div id="colorc">
+<input type="text" id="hexcolor" value="#FF0000"/>
+<input type="text" id="rgbcolor"/>
+<script type="text/javascript">
+var RGB2Hex=function(r,g,b) {
+    var color=[0,0,0];
+    if(arguments.length!=3) {
+        r=r.split(",");
+        for(var n in r) color[n]=r[n]-0;
+    }
+    else color=arguments;
+    return "#"+("000000"+(((color[0]*256*256+color[1]*256+color[2])||"000000").toString(16))).slice(-6).toUpperCase();
+};
+var Hex2RGB=function(hex) {
+    var s=hex.replace(/\s+|#/g,"");
+    if(s.length==3) s=s.replace(/(\w)/g,"$1$1");
+    if(s.length==6)
+        return [parseInt(s.substr(0,2),16),parseInt(s.substr(2,2),16),parseInt(s.substr(4,2),16)];
+    return [0,0,0];
+};
+(function(){
+var $=function(id){return typeof(id)==="string"?document.getElementById(id):id};
+
+$("rgbcolor").onkeyup=function() {    
+    var c=RGB2Hex(this.value);
+    $("hexcolor").value=c;
+    $("colorc").style.border="solid 1px "+c;
+}
+var f=function() {
+    var c=Hex2RGB($("hexcolor").value);
+    $("rgbcolor").value=c;
+    $("colorc").style.border="solid 1px rgb("+c+")";
+};
+$("hexcolor").onkeyup=f;
+f();
+})();
+</script>
+</div>
+</li>
+<li><div class="title">js进制转换</div><!--2009-12-11-->
+<textarea id="calc" class="tarea1">1234 2234 3234</textarea>
+<div id="calcconfig">
+From：<input type="radio" value="16" id="hexf" name="f"/><label for="hexf">16进制</label>
+<input type="radio" value="10" id="decf" name="f" checked="checked"/><label for="decf">10进制</label>
+<input type="radio" value="8" id="octalf" name="f"/><label for="octalf">8进制</label>
+<input type="radio" value="2" id="binaryf" name="f"/><label for="binaryf">2进制</label><br/>
+To：&nbsp;&nbsp;&nbsp;<input type="radio" value="16" id="hex" name="t" checked="checked"/><label for="hex">16进制</label>
+<input type="radio" value="10" id="dec" name="t"/><label for="dec">10进制</label>
+<input type="radio" value="8" id="octal" name="t"/><label for="octal">8进制</label>
+<input type="radio" value="2" id="binary" name="t"/><label for="binary">2进制</label>
+</div>
+<textarea id="calcinfo" class="tarea2"></textarea>
+</body>
+<script type="text/javascript">
+(function() {
+var $=function(id){return typeof(id)==="string"?document.getElementById(id):id};
+var v=function(n){
+    var s=document.getElementsByName(n),len=s.length;
+    for(var i=0,cur;i<len;i++) {
+        cur=s[i];
+        if(cur.checked)
+            return cur.value-0;
+    }
+};
+var calc=function() {
+    var f=v("f"),t=v("t");
+    $("calcinfo").value=$("calc").value.replace(/([0-9A-F]+)/ig,function($,$1) {
+        return parseInt($1,f).toString(t)
+    }).toUpperCase();
+}
+$("calc").onkeyup=$("calc").onclick=calc;
+var els=$("calcconfig").getElementsByTagName("input"),len=els.length;
+for(var i=0;i<len;i++) {
+    els[i].onclick=calc;
+}
+})();
+</script>
+</li>
+<li><div class="title">控制上传file的文件类型</div>
+<textarea code="html">
+<input type="file" onchange="checkExt(this)"/>
+
+<script type="text/javascript"> 
+var checkExt=function(file) {
+    if(!(/(?:jpg|gif)$/i.test(file.value))) {
+        alert("只允许上传jpg和gif的图片");
+        if(window.ActiveXObject) {//for IE
+            file.select();//select the file ,and clear selection
+            document.selection.clear();
+        } else if(window.opera) {//for opera
+            file.type="text";file.type="file";
+        } else file.value="";//for FF,Chrome,Safari
+    } else {
+        alert("ok");//or you can do nothing here.
+    }
+};
+</script>
+</textarea></li>
+<li><div class="title"><pre>
+面试一家 浏览器软件公司的时候，遇到一道据说是测试web智商 的题目，由于本人并非 网络专业，所以连题目都没有看懂，请大家指点。
+题目没有其他说明，只有下面几行数字 :
+69 66 20 79    6F 75 20 63 
+61 6E 20 72    65 61 64 20 
+74 65 69 73    20 77 65 20 
+77 61 6E 74    20 79 6F 75 
+</pre></div>
+<textarea code="js">
+//if you can read teis we want you 
+var hexToString=function(h) {
+    var r ="";
+    for (var i = (h.substr(0, 2) == "0x") ? 2 : 0; i < h.length; i += 2) {
+        r+=(String.fromCharCode(parseInt(h.substr(i, 2), 16)));
+    }
+    return r;
+}
+var str="69 66 20 79 6F 75 20 63 61 6E 20 72  65 61 64 20 74 65 69 73 20 77 65 20 77 61 6E 74  20 79 6F 75";
+str=hexToString(str.replace(/ /g,""));
+alert(str);
+</textarea>
+From：<a target="_blank" href="http://topic.csdn.net/u/20091208/09/a1e39da2-6f71-4a8d-a09f-abb746084e1c.html?2137">问一道web智商题目(16进制字符串转换)</a>
+</li>
+<li><div class="title">js获取url中的参数</div>
+<textarea code="js:norun">
+//lastest:
+var getArgs=function() {//get url querystring
+    var params=document.location.search,reg=/(?:^\?|&)(.*?)=(.*?)(?=&|$)/g,temp,args={};
+    while((temp=reg.exec(params))!=null) args[temp[1]]=decodeURIComponent(temp[2]);
+    return args;
+};
+//只取一个：
+var queryString=function(key){
+    return (document.location.search.match(new RegExp("(?:^\\?|&)"+key+"=(.*?)(?=&|$)"))||['',null])[1];
+}
+var args=getArgs();
+alert(args.name+" | "+args.sex+" | "+args.age);
+//测试链接：< a href="?name=abc&sex=男&age=12">test getQueryString</a>
+
+//deprecated
+var getArgs=function() {
+    var params=document.location.search.substr(1),reg=/(?:^|&)(.*?)=(.*?)(?:&|$)/g,temp,args={};
+    while((temp=reg.exec(params))!=null) {        
+        args[temp[1]]=temp[2];
+        reg.lastIndex-=1;//减1，下一次从结束的&开始匹配
+    }
+    return args;
+};
+var getArgs=function(){
+    var sarg = document.location.search.substr(1),rv={};
+    rv.filename = document.location.pathname.replace(/.*\//ig,'');
+    if(!sarg){return rv;}
+    var aarg = sarg.split('&'),atmp=[];
+    for(var i=0;i< aarg.length;i++){
+        atmp = aarg[i].split('=');
+        rv[atmp[0]] = unescape(atmp[1]);
+    }
+    return rv;
+};
+</textarea>
+</li>
+<li><div class="title">js Unicode编码转换</div>
+<textarea code="js">
+/*
+ *js Unicode编码转换
+ */ 
+var decToHex = function(str) {
+    var res=[];
+    for(var i=0;i < str.length;i++)
+        res[i]=("00"+str.charCodeAt(i).toString(16)).slice(-4);
+    return "\\u"+res.join("\\u");
+}
+var decToHex2 = function(str) {
+    var res="",c;
+    for(var i=0;i < str.length;i++){
+        c=str.charCodeAt(i);
+        res+=(c< 32 || c==38 || c>127)?"\\u"+c.toString(16):str.charAt(i)
+    }
+    return res
+}
+var hexToDec = function(str) {
+    str=str.replace(/\\/g,"%");
+    return unescape(str);
+}
+var str=decToHex2("decToHex unicode 编码转换");
+alert("编码后："+str+"\n\n解码后："+hexToDec(str));
+</textarea>
+</li>
+<li><div class="title">js HTML编码转换</div>
+<textarea code="js">
+/*
+ *js HTML Encode
+ */ 
+var htmlEncode=function(str) {//HTML des encode.
+    var res=[];
+    for(var i=0;i < str.length;i++)
+        res[i]=str.charCodeAt(i);
+    return "&#"+res.join(";&#")+";";
+};
+var htmlEncode2=function(s) {
+    var r = "", c;
+    for (var i = 0; i < s.length; i++) {
+        c = s.charCodeAt(i);
+        r += (c < 32 || c == 38 || c > 127) ? ("&#" + c + ";") : s.charAt(i);
+    }
+    return r;
+};
+//s.replace(/([\u4e00-\u9fa5]+)/g,function($,$1) {
+//    return htmlEncode($1);
+//})
+var htmlHexEncode=function(str) {//HTML hex encode.
+    var res=[];
+    for(var i=0;i < str.length;i++)
+        res[i]=str.charCodeAt(i).toString(16);
+    return "&#"+String.fromCharCode(0x78)+res.join(";&#"+String.fromCharCode(0x78))+";";//x ，防止ff下&#x 转义
+};
+var htmlDecode = function(str) {
+    return str.replace(/&#(x)?([^&]{1,5});?/g,function($,$1,$2) {
+        return String.fromCharCode(parseInt($2 , $1 ? 16:10));
+    });
+};
+var s="htmlEncode HTML 编码转换 &#";
+var s1=htmlEncode(s)+"\n\n只对双字节和&编码："+htmlEncode2(s);
+var s2=htmlDecode(s1);
+alert("编码前："+s+"\n\n编码后："+s1+"\n\n解码后："+s2);
+
+var s="htmlHexEncode HTML 编码转换&#";
+var s1=htmlHexEncode(s);
+var s2=htmlDecode(s1);
+alert("编码前："+s+"\n\n编码后："+s1+"\n\n解码后："+s2);
+</textarea>
+</li>
+<li><div class="title">js 全半角转换</div>
+<textarea code="js">
+/*
+ *全角空格为12288，半角空格为32
+ *其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
+ */
+function SBC(text) {
+    return text.replace(/[\x20-\x7e]/g, function($) {
+        return $ == " " ? "\u3000" : String.fromCharCode($.charCodeAt(0) + 0xfee0);
+    });
+}
+var toDBC=function(input) {//to DBC case
+    var res="",c;
+    for(var i=0;i< input.length;i++) {
+        c=input.charCodeAt(i);
+        if(c >=0xFF01 && c <=0xFF5E)// 65281 65374
+            res+=String.fromCharCode(c-0xFEE0);//65248
+        else if(c==0x3000)//12288
+            res+=String.fromCharCode(0x20);//32
+        else
+            res+=input.charAt(i);
+    }
+    return res;
+}
+var toSBC=function(input) {//to SBC case
+    var res="",c;
+    for(var i=0; i < input.length;i++) {
+        c=input.charCodeAt(i);
+        if(c>=0x21 && c<=0x7e)//33 126
+            res+=String.fromCharCode(c+0xFEE0);
+        else if(c==0x20)
+            res += String.fromCharCode(0x3000);
+        else
+            res += input.charAt(i);
+    }
+    return res;
+}
+var s="，哦哦，hello　ｓｓｓｓ！＃～";
+var s1=toDBC(s);
+var s2=toSBC(s1);
+alert("原字符："+s+"\n\ntoDBC："+s1+"\n\ntoSBC："+s2);
+</textarea>
+</li>
+        </ul>
+	</div>
+</body>
+<script type="text/javascript">
+var g=function(id){return document.getElementById(id)};
+var list=g("list1").children;
+var len=list.length;
+for(var i=0;i<len;i++) {
+    var title=list[i].children[0];
+    title.innerHTML=(i+1)+".&nbsp;"+title.innerHTML;
+}
+</script>
+<script type="text/javascript" src="demo/highlight.js"></script>
+</html>

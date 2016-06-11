@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>星级评分效果</title>
+    <meta name="Keywords" content="星级评分效果,javascript"/>
+    <style type="text/css">
+    /* pre style*/
+    body,th,td {font-size:12px;font-family:Verdana,Tahoma,Arial,'\5b8b\4f53','\5FAE\8F6F\96C5\9ED1',sans-serif;}
+    body,th,td,ol,ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,button,textarea,p  {margin:0;padding:0;}
+    li { list-style-type:none;}
+    a {color:#3366CC; text-decoration:none;}
+	a:hover 	{color:#FF6600;text-decoration:underline;}
+	/************************************************************/
+	#div1{margin:20px auto;width:300px;}
+	/*http://pages.anjukestatic.com/img/comm/commstar.gif*/
+	.grade_stars,.grade_stars div {background:transparent url(https://o8hio0x77.qnssl.com/i/2016-06-11_15:45:41.jpg) repeat-x scroll left -26px}
+	.grade_stars{cursor:pointer;padding:0; position:relative; line-height:24px; width:75px;display:inline-block; }
+    .grade_stars div{ background-position:left 4px; text-indent:-9999px; width:38px; }
+    </style>
+</head>
+<body>
+
+<div id="div1">
+<p><a href="/" title="uedsky.com">返回博客首页</a></p>
+<p>利用e.offsetX和e.layerX两个属性</p>
+评分：
+    <span class="grade_stars" id="grade_stars">
+        <div>&nbsp;</div>
+    </span>&nbsp;&nbsp;<span id="score">5.0分</span>
+</div>
+
+</body>
+<script type="text/javascript">
+!function(){
+var g=function(id){return typeof(id)==="string"?document.getElementById(id):id};
+
+g("grade_stars").onclick=function(e){
+    e=window.event || e;
+    var w=e.offsetX ||e.layerX;
+    this.children[0].style.width=w+"px";
+    g("score").innerHTML=(w/this.offsetWidth*10).toFixed(1)+"分";
+}
+
+}();
+</script>
+</html>
