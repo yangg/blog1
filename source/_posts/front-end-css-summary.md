@@ -20,31 +20,7 @@ Brower support: [flex box(IE 10+)](http://caniuse.com/#search=flex), [:before & 
 <div id="footer">&copy; Brook.inc</div>
 ```
 
-* flex 布局
-
-  ```scss
-  html {
-    height: 100%;
-  }
-  $footer-height: 30px;
-  body {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  #content {
-    flex: 1;
-  }
-
-  #footer {
-    line-height: $footer-height;
-    text-align: center;
-  }
-  ```
-  [查看 demo](http://codepen.io/yangg/pen/dMLgbv)
-
 * -margin & padding
-
   ```scss
   html, body {
     height: 100%;
@@ -71,6 +47,31 @@ Brower support: [flex box(IE 10+)](http://caniuse.com/#search=flex), [:before & 
   }
   ```
 [查看 demo](http://codepen.io/yangg/pen/GZLyQE)
+
+* flex 布局
+  ```scss
+  html {
+    height: 100%;
+  }
+  $footer-height: 30px;
+  body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  #content {
+    flex: 1;
+  }
+
+  #footer {
+    line-height: $footer-height;
+    text-align: center;
+  }
+  ```
+[查看 demo](http://codepen.io/yangg/pen/dMLgbv)
+
+* grid 布局（ps：兼容性差）
+[查看 demo](https://codepen.io/yangg/pen/vKGjWL)
 
 ## absolute center
 不定宽高的垂直水平居中
