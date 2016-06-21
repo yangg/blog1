@@ -33,8 +33,8 @@ tags:
 ```
 
 完整的锯齿边框效果
-<p data-height="265" data-theme-id="0" data-slug-hash="mJBWPG" data-default-tab="css,result" data-user="yangg" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/yangg/pen/mJBWPG/">CSS saw-tooth borders</a> by Brook Yang (<a href="http://codepen.io/yangg">@yangg</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+{% codepen mJBWPG %}
 
 ### 更多背景效果
  * gingham
@@ -89,7 +89,7 @@ tags:
 [![](https://o8hio0x77.qnssl.com/i/2016-06-09_12:02:39.jpg)](http://codepen.io/yangg/pen/VLwyeY)
 
 ## Image Placeholder - :before
-见另一篇文章 {% post_link "css-none-image-loading-error" %}
+见另一篇文章 {% post_link css-none-image-loading-error %}
 
 ## 投影效果 - :before + box-shadow
 ![](https://o8hio0x77.qnssl.com/i/2016-06-09_12:02:42.jpg)
