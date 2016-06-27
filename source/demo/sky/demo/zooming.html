@@ -1,11 +1,11 @@
 <!doctype html>
 <head>
 <meta charset="utf-8"/>
-    <title>完全兼容鼠标滚动缩放图片</title>    
+    <title>完全兼容鼠标滚动缩放图片</title>
     <meta name="description" content="完全兼容的鼠标滚动缩放图片，兼容各大浏览器，包括 ie6"/>
     <meta name="Keywords" content="鼠标滚动缩放图片，兼容IE,FF,Chrome,Safari,Opera,前端,onmousewheel,DOMMouseScroll"/>
     <style>
-/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:11pt/1.8 tahoma,arial,\5b8b\4f53,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
+/*!css reset*/ body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}body,button,input,select,textarea{font:16px/1.6 Avenir,Helvetica Neue,Hiragino Sans GB,Microsoft Yahei,sans-serif;}h1,h2,h3,h4,h5,h6{font-size:100%;}code,kbd,pre,samp{font-family:courier new,courier,monospace;}fieldset,img{border:0;}table{border-collapse:collapse;border-spacing:0;}ul,ol{list-style:none;}a{text-decoration:none;outline:none;color:#36c;}a:hover,a:active{text-decoration:underline;color:#FF4E00}
 
     #div1 {width:600px;margin:100px auto;height:2000px;}
     </style>
@@ -33,9 +33,9 @@ var zooming=function(e){
     e=window.event ||e;
     var o=this,data=e.wheelDelta || -e.detail*40,zoom,size;//FF的e.detail跟wheelDelta是相反的
     if(!+'\v1'){//IE
-        zoom = parseInt(o.style.zoom) || 100; 
+        zoom = parseInt(o.style.zoom) || 100;
         zoom += data / 12;
-        if(zoom > zooming.min) 
+        if(zoom > zooming.min)
             o.style.zoom = zoom + '%';
         e.returnValue=false;
     }else {
