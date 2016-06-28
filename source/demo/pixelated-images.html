@@ -8,7 +8,17 @@
 img {
   width: 300px; height: 300;
 }
-.pixelate img { image-rendering: pixelated; }
+/**
+ * 1. IE & IE Mobile
+ * 2. Firefox
+ * 3. Safari, iOS Safari
+ */
+.pixelate img {
+  -ms-interpolation-mode: nearest-neighbor; /* 1 */
+  image-rendering: -moz-crisp-edges; /* 2 */
+  image-rendering: -webkit-crisp-edges; /* 3 */
+  image-rendering: pixelated;
+}
 </style>
 </head>
 <body>
