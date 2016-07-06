@@ -26,22 +26,21 @@ tags:
 ## 增强
 可是这样感觉效果并不完美，因为过长的文字直接不显示，手机上的滚动条也不会显示，这样用户完全不知道这里可以滚动，想到之后做[多行文字截取](https://codepen.io/yangg/pen/mJEVPx)时用的 `::after` 做的白色透明渐变效果加在这里应该也不错。
 
-## 完整的代码
+## 演示效果 + 完整代码
 ```html+
 <div class="text-scrollable" style="max-width: 375px;"><!-- PC 屏幕太宽，我加个宽度限制，默认就是整行 -->
-    <div class="text-scrollable__scroller">Enjoy when you can, and endure when you must. 能享受时可尽兴，须忍受时当坚持。</div>
+    <div class="text-scrollable__scroller">Enjoy when you can, and endure when you must. 用手机查看无滚动条，效果更佳。</div>
 </div>
 ```
 ```css+
 .text-scrollable {
   white-space: nowrap;
   overflow: hidden;
-  max-width: 100%;
   position: relative;
 }
 .text-scrollable__scroller {
   overflow-x: auto;
-  padding-right: 1.5em;
+  padding-right: 2em;
 }
 .text-scrollable::after {
   content: '';
@@ -49,8 +48,8 @@ tags:
   top: 0;
   right: 0;
   bottom: 0;
-  width: 1.5em;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.3), white);
+  width: 2em;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), white);
 }
 ```
 
