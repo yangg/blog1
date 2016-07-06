@@ -181,7 +181,7 @@ class VersionedArray extends Array {
   get length() {
     return this.history;
   }
-  set prop(value) {
+  set length(value) {
     console.log('length: ');
     this.history.length = value;
   }
