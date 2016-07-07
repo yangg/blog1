@@ -25,7 +25,7 @@ hexo.extend.filter.register('after_post_render', function (data) {
   // <figure class="highlight js">
   var regCode = /<figure class="highlight (\w+)"/g
   data.content = data.content.replace(regCode, function($0, lang) {
-    var label = '<div class="highlight-show-language"><div class="highlight-show-language-label">' + getLang(lang) + '</div></div>';
+    var label = '<div class="highlight-show-language"><div class="highlight-show-language__label">' + getLang(lang) + '</div></div>';
     return label + $0;
   });
 
