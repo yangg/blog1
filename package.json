@@ -6,7 +6,7 @@
     "version": "3.2.0"
   },
   "scripts": {
-    "reload": "cd themes/even && gulp less && cd - && hexo g",
+    "serve": "hexo clean && cd themes/even && npm run build && cd - && hexo server --debug",
     "deploy": "hexo clean && hexo deploy --generate"
   },
   "dependencies": {

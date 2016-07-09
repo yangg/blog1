@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>modal scroll fix</title>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/demo.css">
+  <title>modal scroll fix</title>
 <style>
-body { background: #fafafa; }
 body.modal-open {
     position: fixed;
     width: 100%;
@@ -24,11 +24,16 @@ body.modal-open {
 </style>
 </head>
 <body>
-  <div><a href="/2016-06/mobile-modal-scroll/">Back to post</a></div>
-  <a class="js-open-modal" href="javascript:">Open Modal</a>
-  <div style="height:500px">请使用手机浏览，<a href="https://api.qrserver.com/v1/create-qr-code/?margin=10&size=300x300&data=http://uedsky.com/demo/modal-scroll.html">本页二维码</div>
-  <a class="js-open-modal" href="javascript:">Open Modal2</a>
-  <div style="height:500px"></div>
+<div id="page">
+  <h2 class="page-header">解决滚动穿透问题 Demo</h2>
+  <div class="page-back"><a href="/2016-06/mobile-modal-scroll/">Back to post</a></div>
+  <div class="text-center">
+    <a class="js-open-modal" href="javascript:">Open Modal</a>
+    <div style="height:400px">
+      请使用手机浏览，
+      <a href="https://api.qrserver.com/v1/create-qr-code/?margin=10&size=300x300&data=http://uedsky.com/demo/modal-scroll.html">本页二维码</div>
+    <a class="js-open-modal" href="javascript:">Open Modal 2</a>
+  </div>
   <div id="modal" class="modal">
     <div class="modal-frame">
       <div style="height:9em;overflow-y:auto;">
@@ -47,6 +52,8 @@ body.modal-open {
       </div>
     </div>
   </div>
+</div>
+<footer id="footer">&copy;2016 Brook </footer>
 <script>
 (function() {
   // https://github.com/twbs/bootstrap/issues/15852
@@ -68,7 +75,16 @@ body.modal-open {
   btns[1].onclick = openModal;
   document.querySelector('#modal').onclick = closeModal;
 })();
-  </script>
-  <script src="polyfills/document.scrollingElement.js"></script>
+</script>
+<script>
+(function() {
+  function addScript(src, supported) {
+   if(!supported)
+     document.write('<script src="' + src + '" async ></' + 'script>');
+  }
+  addScript('polyfills/document.scrollingElement.js', document.scrollingElement);
+})();
+</script>
 </body>
 </html>
+  

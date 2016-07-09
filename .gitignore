@@ -1,6 +1,9 @@
 .DS_Store
 Thumbs.db
 .idea
+.sass-cache
+# css source maps
+*.map
 
 db.json
 *.log

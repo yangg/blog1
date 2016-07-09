@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/demo.css">
+  <title>CSS scroll snap points Demo</title>
+<style>
+.snap-slider {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-scroll-snap-type: mandatory;
+      -ms-scroll-snap-type: mandatory;
+          scroll-snap-type: mandatory;
+  -webkit-scroll-snap-destination: 50% 0;
+      -ms-scroll-snap-destination: 50% 0;
+          scroll-snap-destination: 50% 0;
+}
+.snap-slider__scroller {
+  display: table;
+  text-align: center;
+}
+.snap-slider__item {
+  -webkit-scroll-snap-coordinate: 50% 0%;
+      -ms-scroll-snap-coordinate: 50% 0%;
+          scroll-snap-coordinate: 50% 0%;
+  display: table-cell;
+  line-height: 150px;
+  font-size: 2em;
+}
+.snap-slider__item:not(:first-child) {
+  border-left: 1px solid #ccc;
+}
+.snap-slider__width {
+  width: 80vw;
+}
+
+.unsupport {
+  display: none;
+  color: #f00;
+}
+.unsupport--scroll-snap .unsupport {
+  display: block;
+}
+</style>
+</head>
+<body>
+<div id="page" class="fullwidth">
+  <h2 class="page-header">CSS Scroll snap points</h2>
+  <div class="page-back"><a href="/2016-07/css-scroll-snap-points/">Back to Post</a></div>
+  <div class="snap-slider">
+    <div class="snap-slider__scroller">
+      <div class="snap-slider__item">
+        <div class="snap-slider__width">0</div>
+      </div>
+      <div class="snap-slider__item">
+        <div class="snap-slider__width">1</div>
+      </div>
+      <div class="snap-slider__item">
+        <div class="snap-slider__width">2</div>
+      </div>
+      <div class="snap-slider__item">
+        <div class="snap-slider__width">3</div>
+      </div>
+      <div class="snap-slider__item">
+        <div class="snap-slider__width">4</div>
+      </div>
+    </div>
+  </div>
+  <div class="unsupport">CSS scroll snap points is not supported in this browser, please try Firefox or (Safari, Chrome on iOS)</div>
+  <div class="browser-support"><a href="http://caniuse.com/#feat=css-snappoints" target="_blank">Browser Support</a></div>
+</div>
+<footer id="footer">&copy;2016 Brook </footer>
+<script>
+(function() {
+  var isSupportScrollSnap = ['scrollSnapType', 'webkitScrollSnapType'].some(function(attr) {
+    return attr in document.documentElement.style;
+  });
+  if(!isSupportScrollSnap) {
+    document.documentElement.classList.add('unsupport--scroll-snap');
+    
+    // function addScript(src, supported) {
+    //  if(!supported)
+    //    document.write('<script src="' + src + '" async ></' + 'script>');
+    // }
+    // addScript('https://o8hio0x77.qnssl.com/src/polyfills/polyfill.js');
+    // addScript('https://o8hio0x77.qnssl.com/src/polyfills/scrollsnap.js');
+  }
+})();
+</script>
+</body>
+</html>
