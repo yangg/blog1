@@ -13,6 +13,8 @@ body { scroll-behavior: smooth; }
 <div id="page">
   <h2 class="page-header">Smooth scroll</h2>
   <div class="page-back"><a href="/">Back to Home</a></div>
+  <div class="unsupport">Smooth scroll is not supported in this browser, please try Firefox</div>
+  <div class="browser-support"><a href="http://caniuse.com/#feat=css-scroll-behavior" target="_blank">Browser Support</a></div>
   <div class="text-center">
     <div style="height:500px" id="floor1">
       Floor 1
@@ -23,12 +25,13 @@ body { scroll-behavior: smooth; }
       <a href="#floor1">Goto Floor 1</a>
     </div>
   </div>
-  <div class="unsupport">Smooth scroll is not supported in your browser</div>
-  <div class="browser-support"><a href="http://caniuse.com/#feat=css-scroll-behavior" target="_blank">Browser Support</a></div>
 </div>
 <footer id="footer">&copy;2016 Brook </footer>
 <script>
 (function() {
+  if(! ('scrollBehavior' in document.body.style)) {
+    document.querySelector('.unsupport').classList.add('show');
+  }
   // http://thenewcode.com/507/Smooth-Page-Scroll-in-5-Lines-of-JavaScript
   var anchors = document.querySelectorAll('a[href^="#"]');
   if(0 && window.scrollTo.length != 2) {

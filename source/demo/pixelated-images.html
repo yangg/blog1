@@ -46,11 +46,7 @@ img {
   var toggle = document.querySelector('#toggle_pixelate');
   toggle.onchange = function() {
     var wrap = document.querySelector('#wrap');
-    if(this.checked) {
-      wrap.classList.add('pixelate');
-    } else {
-      wrap.classList.remove('pixelate');
-    }
+    wrap.classList.toggle('pixelate', this.checked);
   }
 })();
 </script>

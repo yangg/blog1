@@ -24,7 +24,9 @@ body {
 #page {
 	padding: 0 15px;
 	
-	max-width: 750px;
+	@media (min-width: 750px) {
+		width: 750px;
+	}
 	margin: 0 auto;
 
 	flex: 1;
@@ -48,4 +50,14 @@ body {
 
 .text-center {
 	text-align: center;
+}
+
+.unsupport {
+  display: none;
+  color: #d9534f;
+  font-size: 1.5em;
+  text-align: center;
+  &.show {
+    display: block;
+  }
 }

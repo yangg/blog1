@@ -34,14 +34,6 @@
 .snap-slider__width {
   width: 80vw;
 }
-
-.unsupport {
-  display: none;
-  color: #f00;
-}
-.unsupport--scroll-snap .unsupport {
-  display: block;
-}
 </style>
 </head>
 <body>
@@ -77,7 +69,7 @@
     return attr in document.documentElement.style;
   });
   if(!isSupportScrollSnap) {
-    document.documentElement.classList.add('unsupport--scroll-snap');
+    document.querySelector('.unsupport').classList.add('show');
     
     // function addScript(src, supported) {
     //  if(!supported)

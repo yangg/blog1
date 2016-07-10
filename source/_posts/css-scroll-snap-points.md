@@ -13,7 +13,7 @@ tags:
 
 ## 渐近增强
 刚好最近看到这篇文章 [Introducing CSS Scroll Snap Points](https://css-tricks.com/introducing-css-scroll-snap-points/) ，如果结合 Scroll snap points 每次滚动的时候每个条目始终在中间这样效果就更好了。
-
+<!-- more -->
 ```scss
 .snap-slider {
     overflow-x: auto;
