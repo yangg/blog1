@@ -65,10 +65,14 @@
 <footer id="footer">&copy;2016 Brook </footer>
 <script>
 (function() {
-  var isSupportScrollSnap = ['scrollSnapType', 'webkitScrollSnapType'].some(function(attr) {
-    return attr in document.documentElement.style;
-  });
-  if(!isSupportScrollSnap) {
+  function isSupport(attr) {
+    return ['', 'webkit-', 'ms-'].some(function(prefix) {
+      var prefixed = (prefix + attr).replace(/-([a-z])/g, function(_, $1) { return $1.toUpperCase(); });
+      return prefixed in document.documentElement.style;
+    });
+  }
+  var isSupport = isSupport('scroll-snap-type') && isSupport('scroll-snap-coordinate');
+  if(!isSupport) {
     document.querySelector('.unsupport').classList.add('show');
     
     // function addScript(src, supported) {

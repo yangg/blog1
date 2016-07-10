@@ -29,7 +29,7 @@ body { scroll-behavior: smooth; }
 <footer id="footer">&copy;2016 Brook </footer>
 <script>
 (function() {
-  if(! ('scrollBehavior' in document.body.style)) {
+  if(! ('scrollBehavior' in document.documentElement.style)) {
     document.querySelector('.unsupport').classList.add('show');
   }
   // http://thenewcode.com/507/Smooth-Page-Scroll-in-5-Lines-of-JavaScript
