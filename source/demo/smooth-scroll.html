@@ -1,32 +1,24 @@
-<!doctype html>
-<html>
-  <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/demo.css">
-  <title>Smooth scroll</title>
+---
+layout: demo
+title: Smooth scroll
+date: 2016-07-10 21:29:38
+---
 <style>
 body { scroll-behavior: smooth; }
 </style>
-</head>
-<body>
-<div id="page">
-  <h2 class="page-header">Smooth scroll</h2>
-  <div class="page-back"><a href="/">Back to Home</a></div>
-  <div class="unsupport">Smooth scroll is not supported in this browser, please try Firefox</div>
-  <div class="browser-support"><a href="http://caniuse.com/#feat=css-scroll-behavior" target="_blank">Browser Support</a></div>
-  <div class="text-center">
-    <div style="height:500px" id="floor1">
-      Floor 1
-      <a href="#floor2">Goto Floor 2</a>
-    </div>
-    <div style="height:500px" id="floor2">
-      Foor 2
-      <a href="#floor1">Goto Floor 1</a>
-    </div>
+
+<div class="unsupport">Smooth scroll is not supported in this browser, please try Firefox</div>
+<div class="browser-support"><a href="http://caniuse.com/#feat=css-scroll-behavior">Browser Support</a></div>
+<div class="text-center">
+  <div style="height:500px" id="floor1">
+    Floor 1
+    <a href="#floor2">Goto Floor 2</a>
+  </div>
+  <div style="height:500px" id="floor2">
+    Foor 2
+    <a href="#floor1">Goto Floor 1</a>
   </div>
 </div>
-<footer id="footer">&copy;2016 Brook </footer>
 <script>
 (function() {
   if(! ('scrollBehavior' in document.documentElement.style)) {
@@ -51,5 +43,3 @@ body { scroll-behavior: smooth; }
   }
 })();
 </script>
-</body>
-</html>

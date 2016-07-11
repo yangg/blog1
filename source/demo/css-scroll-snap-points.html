@@ -1,11 +1,11 @@
-<!doctype html>
-<html>
-  <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/demo.css">
-  <title>CSS scroll snap points Demo</title>
+---
+layout: demo
+title: CSS scroll snap points
+date: 2016-07-10 21:29:38
+back: css-scroll-snap-points
+---
 <style>
+#page { width: 100%; }
 .snap-slider {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -35,34 +35,27 @@
   width: 80vw;
 }
 </style>
-</head>
-<body>
-<div id="page" class="fullwidth">
-  <h2 class="page-header">CSS Scroll snap points</h2>
-  <div class="page-back"><a href="/2016-07/css-scroll-snap-points/">Back to Post</a></div>
-  <div class="snap-slider">
-    <div class="snap-slider__scroller">
-      <div class="snap-slider__item">
-        <div class="snap-slider__width">0</div>
-      </div>
-      <div class="snap-slider__item">
-        <div class="snap-slider__width">1</div>
-      </div>
-      <div class="snap-slider__item">
-        <div class="snap-slider__width">2</div>
-      </div>
-      <div class="snap-slider__item">
-        <div class="snap-slider__width">3</div>
-      </div>
-      <div class="snap-slider__item">
-        <div class="snap-slider__width">4</div>
-      </div>
+<div class="snap-slider">
+  <div class="snap-slider__scroller">
+    <div class="snap-slider__item">
+      <div class="snap-slider__width">0</div>
+    </div>
+    <div class="snap-slider__item">
+      <div class="snap-slider__width">1</div>
+    </div>
+    <div class="snap-slider__item">
+      <div class="snap-slider__width">2</div>
+    </div>
+    <div class="snap-slider__item">
+      <div class="snap-slider__width">3</div>
+    </div>
+    <div class="snap-slider__item">
+      <div class="snap-slider__width">4</div>
     </div>
   </div>
-  <div class="unsupport">CSS scroll snap points is not supported in this browser, please try Firefox or (Safari, Chrome on iOS)</div>
-  <div class="browser-support"><a href="http://caniuse.com/#feat=css-snappoints" target="_blank">Browser Support</a></div>
 </div>
-<footer id="footer">&copy;2016 Brook </footer>
+<div class="unsupport">CSS scroll snap points is not supported in this browser, please try Firefox or (Safari, Chrome on iOS)</div>
+<div class="browser-support"><a href="http://caniuse.com/#feat=css-snappoints">Browser Support</a></div>
 <script>
 (function() {
   function isSupport(attr) {
@@ -84,5 +77,3 @@
   }
 })();
 </script>
-</body>
-</html>

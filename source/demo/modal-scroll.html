@@ -1,10 +1,9 @@
-<!doctype html>
-<html>
-  <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/demo.css">
-  <title>modal scroll fix</title>
+---
+layout: demo
+title: 解决滚动穿透问题 Demo
+date: 2016-07-10 21:29:38
+back: mobile-modal-scroll
+---
 <style>
 body.modal-open {
     position: fixed;
@@ -22,38 +21,31 @@ body.modal-open {
   padding: 1em;
 }
 </style>
-</head>
-<body>
-<div id="page">
-  <h2 class="page-header">解决滚动穿透问题 Demo</h2>
-  <div class="page-back"><a href="/2016-06/mobile-modal-scroll/">Back to post</a></div>
-  <div class="text-center">
-    <a class="js-open-modal" href="javascript:">Open Modal</a>
-    <div style="height:400px">
-      请使用手机浏览，
-      <a href="https://api.qrserver.com/v1/create-qr-code/?margin=10&size=300x300&data=http://uedsky.com/demo/modal-scroll.html">本页二维码</div>
-    <a class="js-open-modal" href="javascript:">Open Modal 2</a>
-  </div>
-  <div id="modal" class="modal">
-    <div class="modal-frame">
-      <div style="height:9em;overflow-y:auto;">
-      这里是可滚动内容<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      Modal Content<br/>
-      </div>
+<div class="text-center">
+  <a class="js-open-modal" href="javascript:">Open Modal</a>
+  <div style="height:400px">
+    请使用手机浏览，
+    <a href="https://api.qrserver.com/v1/create-qr-code/?margin=10&size=300x300&data=http://uedsky.com/demo/modal-scroll.html">本页二维码</div>
+  <a class="js-open-modal" href="javascript:">Open Modal 2</a>
+</div>
+<div id="modal" class="modal">
+  <div class="modal-frame">
+    <div style="height:9em;overflow-y:auto;">
+    这里是可滚动内容<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
+    Modal Content<br/>
     </div>
   </div>
 </div>
-<footer id="footer">&copy;2016 Brook </footer>
 <script>
 (function() {
   // https://github.com/twbs/bootstrap/issues/15852
@@ -85,6 +77,4 @@ body.modal-open {
   addScript('polyfills/document.scrollingElement.js', document.scrollingElement);
 })();
 </script>
-</body>
-</html>
   

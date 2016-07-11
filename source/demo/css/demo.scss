@@ -30,11 +30,6 @@ body {
 	margin: 0 auto;
 
 	flex: 1;
-
-	&.fullwidth {
-		max-width: none;
-		width: 100%;
-	}
 }
 .page-header {
 	text-align: center;
