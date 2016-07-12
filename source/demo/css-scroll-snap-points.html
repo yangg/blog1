@@ -54,7 +54,8 @@ back: css-scroll-snap-points
     </div>
   </div>
 </div>
-<div class="unsupport">CSS scroll snap points is not supported in this browser, please try Firefox or (Safari, Chrome on iOS)</div>
+<div class="unsupport">CSS scroll snap points is not supported in this browser, please try Firefox or (Safari, Chrome on iOS) (7/12/2016)</div>
+<div id="cannot_detect" class="text-danger text-center" hidden>Caveat: Segmentfault，微信 和 QQ 内置浏览器不支持，请使用系统 Safari 或 Chrome (7/12/2016)</div>
 <div class="browser-support"><a href="http://caniuse.com/#feat=css-snappoints">Browser Support</a></div>
 <script>
 (function() {
@@ -67,13 +68,15 @@ back: css-scroll-snap-points
   var isSupport = isSupport('scroll-snap-type') && isSupport('scroll-snap-coordinate');
   if(!isSupport) {
     document.querySelector('.unsupport').classList.add('show');
-    
+
     // function addScript(src, supported) {
     //  if(!supported)
     //    document.write('<script src="' + src + '" async ></' + 'script>');
     // }
     // addScript('https://o8hio0x77.qnssl.com/src/polyfills/polyfill.js');
     // addScript('https://o8hio0x77.qnssl.com/src/polyfills/scrollsnap.js');
+  } else {
+    document.getElementById('cannot_detect').style.display = 'block';
   }
 })();
 </script>

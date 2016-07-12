@@ -17,7 +17,7 @@ tags:
 ```scss
 .snap-slider {
     overflow-x: auto;
-    
+
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: mandatory;
 
@@ -28,10 +28,10 @@ tags:
     }
     &__item {
         scroll-snap-coordinate: 50% 0%;
-        
+
         display: table-cell;
         line-height: 150px; font-size: 2em;
-        
+
         &:not(:first-child) {
             border-left: 1px solid #ccc;
         }
@@ -50,7 +50,9 @@ tags:
 
 ## 浏览器支持情况
 遗憾的是目前(7/9/2016)只有 Firefox 和 iOS 上的 Safari 和 Chrome 原生支持（需要前缀），好在这种可以当做渐进增强，即使浏览器不支持也不影响功能。
-ps：这里有个 [polyfill](https://github.com/ckrack/scrollsnap-polyfill)，但是本例中加了似乎不起作用
+Caveat:
+7/12/2016: Segmentfault App，微信 和 QQ 内置浏览器不支持
+PS：这里有个 [polyfill](https://github.com/ckrack/scrollsnap-polyfill)，但是本例中加了似乎不起作用
 
 
 ## 参考

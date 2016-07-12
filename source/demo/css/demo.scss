@@ -23,7 +23,7 @@ body {
 
 #page {
 	padding: 0 15px;
-	
+
 	@media (min-width: 750px) {
 		width: 750px;
 	}
@@ -45,6 +45,9 @@ body {
 
 .text-center {
 	text-align: center;
+}
+.text-danger {
+  color: #d9534f;
 }
 
 .unsupport {
