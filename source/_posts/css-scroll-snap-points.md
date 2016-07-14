@@ -21,7 +21,7 @@ tags:
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: mandatory;
 
-  scroll-snap-destination: 50% 0;
+    scroll-snap-destination: 50% 0;
     &__scroller {
         display: table;
         text-align: center;
