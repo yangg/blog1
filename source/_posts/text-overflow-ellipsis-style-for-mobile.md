@@ -32,24 +32,20 @@ tags:
     <div class="text-scrollable__scroller">Enjoy when you can, and endure when you must. 用手机查看无滚动条，效果更佳。</div>
 </div>
 ```
-```css+
+```scss+
 .text-scrollable {
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-}
-.text-scrollable__scroller {
-  overflow-x: auto;
-  padding-right: 2em;
-}
-.text-scrollable::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 2em;
-  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), white);
+  &__scroller {
+    overflow-x: auto;
+    padding-right: 2em;
+  }
+  &::after {
+    content: ''; position: absolute;
+    top: 0; right: 0; bottom: 0; width: 2em;
+    background-image: linear-gradient(90deg, rgba(#fff, 0), rgba(#fff, 1));
+  }
 }
 ```
 

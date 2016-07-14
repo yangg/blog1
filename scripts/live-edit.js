@@ -4,8 +4,10 @@ function wrapTag(code, lang) {
     var wrapped = '\n<escape>';
     switch(lang) {
         case "css":
-        case "scss":
             wrapped += '<style>' + code + '</style>';
+            break;
+        case "scss":
+            wrapped += '<style type="text/scss">' + code + '</style>';
             break;
         case "js":
         case "javascript":

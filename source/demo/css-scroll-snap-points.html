@@ -4,35 +4,32 @@ title: CSS scroll snap points
 date: 2016-07-10 21:29:38
 back: css-scroll-snap-points
 ---
-<style>
+<style type="text/scss">
 #page { width: 100%; }
 .snap-slider {
   overflow-x: auto;
+  
   -webkit-overflow-scrolling: touch;
-  -webkit-scroll-snap-type: mandatory;
-      -ms-scroll-snap-type: mandatory;
-          scroll-snap-type: mandatory;
-  -webkit-scroll-snap-destination: 50% 0;
-      -ms-scroll-snap-destination: 50% 0;
-          scroll-snap-destination: 50% 0;
-}
-.snap-slider__scroller {
-  display: table;
-  text-align: center;
-}
-.snap-slider__item {
-  -webkit-scroll-snap-coordinate: 50% 0%;
-      -ms-scroll-snap-coordinate: 50% 0%;
-          scroll-snap-coordinate: 50% 0%;
-  display: table-cell;
-  line-height: 150px;
-  font-size: 2em;
-}
-.snap-slider__item:not(:first-child) {
-  border-left: 1px solid #ccc;
-}
-.snap-slider__width {
-  width: 80vw;
+  scroll-snap-type: mandatory;
+
+  scroll-snap-destination: 50% 0;
+  &__scroller {
+    display: table;
+    text-align: center;
+  }
+  &__item {
+    scroll-snap-coordinate: 50% 0%;
+    
+    display: table-cell;
+    line-height: 150px; font-size: 2em;
+    
+    &:not(:first-child) {
+      border-left: 1px solid #ccc;
+    }
+  }
+  &__width {
+    width: 80vw;
+  }
 }
 </style>
 <div class="snap-slider">
