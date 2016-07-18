@@ -6,7 +6,8 @@
     "version": "3.2.2"
   },
   "scripts": {
-    "serve": "hexo clean && cd themes/even && npm run build && cd ../../ && hexo server --debug",
+    "demo": "hexo new demo temp && mv source/_posts/temp.md",
+    "serve": "hexo clean && cd themes/even && npm run build && cd ../../ && hexo server --debug --draft",
     "deploy": "hexo clean && hexo deploy --generate"
   },
   "dependencies": {
