@@ -11,7 +11,7 @@ tags:
 本博客是用的hexo，deploy 是配置的 rsync，因为公司用的 windows 上没有 rsync， 所以想到 push 后通过 [travis-ci](https://travis-ci.org/) 来自动 deploy，接下来就开工了...
 
 ## travis-ci
-使用 github 帐号登录 https://travis-ci.org/,  将博客项目（[yangg/blog](https://github.com/yangg/blog)）开启，然后在项目下新建 `.travis.yml` 配置文件，当 push 时 travis 自动读取这个配置文件来完成 hexo 的  generate 和 deploy，但是 deploy 需要服务器的 ssh 写权限，所以就需要将 ssh key 上传到项目中，但是因为 github 的项目是公开的，这样就没有安全可言了，好在 travis 有提供[加密功能](http://blog.acwong.org/2016/03/20/auto-deploy-hexo-with-travis-CI/)，只要将 ssh key 加密放到项目中，travis 运行时再解密生成 key，这样安全的问题就解决了。
+使用 github 帐号登录 https://travis-ci.org/,  将博客项目（[yangg/blog](https://github.com/yangg/blog)）开启，然后在项目下新建 `.travis.yml` 配置文件，当 push 时 travis 自动读取这个配置文件来完成 hexo 的  generate 和 deploy，但是 deploy 需要服务器的 ssh 写权限，所以就需要将 ssh key 上传到项目中，但是因为 github 的项目是公开的，这样就没有安全可言了，好在 travis 有提供[加密功能](https://docs.travis-ci.com/user/encrypting-files/)，只要将 ssh key 加密放到项目中，travis 运行时再解密生成 key，这样安全的问题就解决了。
 <!-- more -->
 ## 为 travis 生成 ssh key
 ```bash

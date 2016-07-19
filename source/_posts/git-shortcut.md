@@ -3,7 +3,7 @@ title: git-shortcut 命令行下快捷操作其它项目
 date: 2016-07-18 20:09:31
 tags:
 - git
-- node
+- node.js
 ---
 ## 前言
 因为工作的电脑是 Windows，使用的 [msysGit](https://github.com/msysgit/msysgit) 终端，但是这玩意不支持多 tab，经常要在多个项目中来回操作很麻烦，所以昨天在[v2ex](http://v2ex.com) 看到这个 [小黄鸡](https://github.com/chenminhua/chat_example) 的项目就想到能不能让他操作哪个项目就操作哪个项目呢，刚好周末有空，就写了这个玩意。
