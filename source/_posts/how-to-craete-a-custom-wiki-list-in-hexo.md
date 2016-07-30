@@ -9,7 +9,7 @@ tags:
 这是我新建的 https://github.com/yangg/hexo-theme-even/blob/master/layout/demo.jade
 
 ## Create generator
-
+<!--more-->
 在 blog 里 新建一个文件夹 scripts，里面新建文件 `hexo-generator-wiki.js`，内容大致如下
 
 ```js
