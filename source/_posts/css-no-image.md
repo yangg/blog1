@@ -13,7 +13,7 @@ tags:
 ## 锯齿边框 - background
 首先我们重复135度的白色背景，可以得到下面的
 <div class="demo-jagged-border-half"></div>
-```css+
+```scss+
 .demo-jagged-border-half {
   background-image: linear-gradient(135deg, #fff 50%, transparent 50%);
   background-position: top left, top left;
@@ -26,7 +26,7 @@ tags:
 ```
 再加一个反角度的白色背景
 <div class="demo-jagged-border-half demo-jagged-border-half-2"></div>
-```css+
+```scss+
 .demo-jagged-border-half-2 {
   background-image: linear-gradient(135deg, #fff 50%, transparent 50%), linear-gradient(225deg, #fff 50%, transparent 50%);
 }
@@ -74,7 +74,7 @@ tags:
 <div>
 <a href="javascript:" class="demo-more-link">查看更多 </a>
 </div>
-```css+
+```scss+
 .demo-more-link::after {
   content: '';
   display: inline-block;
