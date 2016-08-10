@@ -1,0 +1,25 @@
+---
+title: Devtools Dectect
+layout: demo
+date: 2016-08-10 09:30:33
+---
+.text-center
+  p Devtools
+    span(id = 'devtools_state')  closed
+  .browser-support Currently support in Chrome and IE.
+
+script.
+  (function() {
+    // http://stackoverflow.com/a/30638226/1063091
+
+    var element = new Image();
+    Object.defineProperty(element, 'id', {
+      get: function () {
+        document.getElementById('devtools_state').innerHTML = ' opened';
+      }
+    });
+    console.log('%c', element); // Chrome
+    window.addEventListener('resize', function() { // IE
+      console.log('%c', element);
+    }, false);
+  })();
