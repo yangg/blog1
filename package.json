@@ -21,11 +21,12 @@
     "hexo-generator-index": "^0.2.0",
     "hexo-generator-sitemap": "^1.1.2",
     "hexo-generator-tag": "^0.2.0",
+    "hexo-postscript": "^1.0.0",
     "hexo-renderer-jade": "^0.3.0",
     "hexo-renderer-marked": "^0.2.9",
+    "hexo-renderer-scss": "^1.0.2",
     "hexo-server": "^0.2.0",
     "node-sass": "^3.8.0",
-    "hexo-renderer-scss": "^1.0.2",
     "postcss": "^5.1.0"
   },
   "main": "index.js",
