@@ -1,5 +1,5 @@
 ---
-title: hexo 自动发布
+title: Hexo 博客 travis-ci 自动部署到VPS
 date: 2016-06-09 16:15:36
 tags:
 - travis-ci

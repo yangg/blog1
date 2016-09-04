@@ -40,7 +40,7 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
 
@@ -72,7 +72,7 @@ deploy:
   type: rsync
   user: brook
   host: uedsky.com
-  port: 1223
+  port: 1224
   root: /var/www/blog
 
 # plugins config

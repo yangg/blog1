@@ -7,7 +7,7 @@
   },
   "scripts": {
     "demo": "hexo new demo temp && mv source/_posts/temp.md",
-    "serve": "hexo clean && cd themes/even && npm run build && cd ../../ && hexo server --debug --draft",
+    "serve": "hexo server --debug --draft",
     "deploy": "hexo clean && hexo deploy --generate"
   },
   "dependencies": {
@@ -25,10 +25,10 @@
     "hexo-renderer-marked": "^0.2.9",
     "hexo-server": "^0.2.0",
     "node-sass": "^3.8.0",
+    "hexo-renderer-scss": "^1.0.2",
     "postcss": "^5.1.0"
   },
   "main": "index.js",
-  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
