@@ -77,3 +77,6 @@ deploy:
 
 # plugins config
 postscript: "> 原文地址：[${post.permalink}](${post.permalink})\n获取最佳阅读体验并参与[讨论](${post.permalink}#comments)，请访问原文"
+
+node_sass:
+  outputStyle: compressed

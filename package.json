@@ -7,7 +7,7 @@
   },
   "scripts": {
     "demo": "hexo new demo temp && mv source/_posts/temp.md",
-    "serve": "hexo server --debug --draft",
+    "serve": "hexo server --debug --draft --port=4008",
     "deploy": "hexo clean && hexo deploy --generate"
   },
   "dependencies": {
