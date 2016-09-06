@@ -51,7 +51,12 @@ add_header      Strict-Transport-Security max-age=31536000;
 ```
 然后 `service reload nginx` 重新加载配置就可以了
 
+## 部署结果查看
+Chrome Devtools -> Network 添加 Protocol 列
 ![uedsky.com http2](https://o8hio0x77.qnssl.com/i/2016-06-11_10:42:38.jpg)
+## 安全测试和评分
+* https://mozilla.github.io/http-observatory-website/
+* https://www.ssllabs.com/ssltest/index.html
 
 ## 参考
 * [免费好用的 HTTPS 证书][https]
