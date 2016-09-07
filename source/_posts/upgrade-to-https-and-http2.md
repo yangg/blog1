@@ -10,7 +10,7 @@ tags:
 ---
 
 ## 为什么升级到 HTTPS
-* HTTP/2 必须基于 HTTPS 部署
+* HTTP/2 必须基于 HTTPS 部署，且[HTTP/2 性能好](http://http2.golang.org/gophertiles?latency=30)
 * 一些 HTML5 API (Geolocation, .etc) 必须在[安全环境](https://sites.google.com/a/chromium.org/dev/Home/chromium-security/deprecating-powerful-features-on-insecure-origins)下使用
 * 更加安全的数据传输，无广告插入
 * 爱折腾
