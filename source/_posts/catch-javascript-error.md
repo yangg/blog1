@@ -35,7 +35,8 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     url: url,
     lineNo: lineNo,
     columnNo: columnNo,
-    error: error
+    error: error,
+    ua: navigator.userAgent // 还可以添加更多调试所需信息，比如登录了的用户 id 等
   };
   $.post('/js-logger', errorData);
   return false;

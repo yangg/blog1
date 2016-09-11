@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Brook
+title: Brook's Blog
 subtitle:
 description: Front end, Javascript, CSS
 author: Brook
-language:
+language: zh-cn
 timezone:
 
 # URL
