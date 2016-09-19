@@ -36,15 +36,23 @@ window.onerror = function (msg, url, lineNo, columnNo, error) {
     lineNo: lineNo,
     columnNo: columnNo,
     error: error,
+    from: location.href,
     ua: navigator.userAgent // 还可以添加更多调试所需信息，比如登录了的用户 id 等
   };
-  $.post('/js-logger', errorData);
+  $.post('/js-logger', errorData); // 如果需要跨域也可以直接使用图片来请求
   return false;
 };
 ```
+
 ### 参数解析
 `msg, url, lineNo, columnNo`， 这4个参数看名字就能知道大概意思了。
 `error`，[Error Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) (object) 表示当前错误对象，包含当前错误比较详细的堆栈等信息，需要比较新的浏览器才有这个参数。
+
+### 防止错误信息丢失
+Ajax 或者图片请求如果出错后马上跳转，请求可能还没发送出去，我们可以优先使用 [sendBeacon](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon) 来发送请求（不兼容的浏览器需要 fallback）
+```js
+navigator.sendBeacon(url, data);
+```
 
 ## 总结
 这样我们就可以利用 onerror 收集用户的 JavaScript 报错信息了
