@@ -18,17 +18,14 @@ function getLang(lang) {
     // to ucfirst
     return langMaps[lang] || (lang.substr(0, 1).toUpperCase() + lang.substr(1));
 }
-hexo.extend.filter.register('after_post_render', function (data) {
-  if (data.layout !== 'post') {
-    return data;
-  }
+hexo.extend.filter.register('after_render:html', function (source) {
   // <figure class="highlight js">
   var regCode = /<figure class="highlight (\w+)"/g
-  data.content = data.content.replace(regCode, function($0, lang) {
+  source = source.replace(regCode, function($0, lang) {
     var label = '<div class="highlight-show-language"><div class="highlight-show-language__label">' + getLang(lang) + '</div></div>';
     return label + $0;
   });
 
   // process.exit;
-  return data;
+  return source;
 });
