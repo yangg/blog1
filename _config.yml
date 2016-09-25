@@ -76,7 +76,33 @@ deploy:
   root: /var/www/blog
 
 # plugins config
-postscript: "> 原文地址：[${post.permalink}](${post.permalink})\n获取最佳阅读体验并参与[讨论](${post.permalink}#comments)，请访问原文"
+postscript: "${post.link ? '' : `> 原文地址：[${post.permalink}](${post.permalink})\n获取最佳阅读体验并参与[讨论](${post.permalink}#comments)，请访问原文`}"
 
 node_sass:
   outputStyle: compressed
+
+# theme config, see https://github.com/ahonn/hexo-theme-even/blob/master/_config.yml.sample
+# navbar
+menu:
+  Home: /
+  Archives: /archives/
+  # Categories: /categories/
+  Tags: /tags/
+  About: /about/
+# Default | Mint Green | Cobalt Blue | Hot Pink | Dark Violet
+theme_color: Mint Green
+# comments
+comments:
+  post: true
+  about: true
+# article directory sidebar
+sidebar: true
+google_analytics: UA-78709503-1
+disqus_shortname: uedsky
+
+# Social links
+social:
+  email: uedsky@gmail.com
+  github: https://github.com/yangg
+  codepen: http://codepen.io/yangg
+  rss: /atom.xml
