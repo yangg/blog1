@@ -24,5 +24,6 @@ tags: [Chrome, 性能]
 ## XHR 重放
 在 ajax 请求上右键，选择 `Replay XHR`，可以将重新再发一遍，这在前端调试接口时比较好用。
 
-## 参考
+## 相关参考
 * https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading?hl=en
+* [Chrome 控制台不完全指南](http://www.cnblogs.com/Wayou/p/chrome-console-tips-and-tricks.html)
