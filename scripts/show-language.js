@@ -19,6 +19,10 @@ function getLang(lang) {
     return langMaps[lang] || (lang.substr(0, 1).toUpperCase() + lang.substr(1));
 }
 hexo.extend.filter.register('after_render:html', function (source) {
+  // only process full html page
+  if(source.indexOf('<!DOCTYPE') !== 0) {
+    return source;
+  }
   // <figure class="highlight js">
   var regCode = /<figure class="highlight (\w+)"/g
   source = source.replace(regCode, function($0, lang) {
