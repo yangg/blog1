@@ -15,7 +15,7 @@ tags: [weapp, weixin, es6]
 也可以安装小程序相关插件
 
 ## 开始写代码
-* 首先需要完整看完微信小程序文档（框架，组件和 API），后面用到时方便查找。
+* 首先需要完整看完微信小程序文档（框架，组件和 API），方便后面用到时查找。
 * view 组件对应 html 里的 div
 * text 对应 span
 * wxss 里选择器只支持 `element, #id, .className, ::after, ::before`
@@ -26,7 +26,7 @@ tags: [weapp, weixin, es6]
 * 模板可以直接 `<include/>` 或者需要传值的使用 `<import/>` + `<template></template>`
 * 样式使用 `@import` 导入
 * js 使用 `require` 引入到页面，然后使用下面的 [mergePage](#mergePage) 来加载到页面对象中。
-
+<!--more-->
 ## mergePage
 * 组件的加载
 ```js
@@ -124,7 +124,12 @@ wx.request({
 ```
 这样 template 中可以使用变量为 `obj` 对象的所有 key，以及 `id` 和 `name`
 ### 模板字符串
-更多 es 6 特性，请参考：https://uedsky.com/2016-06/es6/
+小程序里可以直接方便的使用 es 6 模板字符串
+```js
+let url = `${app.globalData.API_PREFIX}/cart/add`;
+```
+### 更多 es 6 特性
+请参考：https://uedsky.com/2016-06/es6/
 
 ## 其它注意
 * `wx.showToast` 图标只支持"success"、"loading"，错误提示得自定义
