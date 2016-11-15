@@ -38,7 +38,7 @@ Page(util.mergePage({
   }
 }, ErrorMsg/* 更多组件也可以*/));
 ```
-使用`mergePage`方法将所有组件方法及页面事件注册到页面对象
+使用`mergePage`方法的优点是可以将所有**组件方法及页面事件注册到页面对象**
 
 * 组件的编写方式
 ```js
@@ -85,7 +85,9 @@ function mergePage(dest, ...src) {
       args[i][name] && eventsStack[name].push(args[i][name])
     }
   }
-  Object.assign(...args);
+  // Object.assign(...args);
+  // Object.assign 需要添加 polyfill 兼容 Android（不支持数组参数展开）
+  Object.assign.apply(null, args);
   for(let name in eventsStack) {
     dest[name] = function() {
       for(let i = 0; i < eventsStack[name].length; i++) {
