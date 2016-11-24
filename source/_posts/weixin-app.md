@@ -99,8 +99,43 @@ function mergePage(dest, ...src) {
 }
 ```
 
+## `Object.assign` Android 上兼容问题
+小程序里在 Android 上没有 `Object.assign` 这个，除了上面的 mergePage，其它地方也会经常用到。
+我们可以到 app.js 里检测是否支持，然后添加 polyfill
 
-## es 6
+```js
+// polyfill for Android before app starts
+if(!Object.assign) {
+  Object.assign = require('./utils/object-assign')
+}
+```
+
+`utils/object-assign.js` 源码
+
+```js
+// https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+module.exports = function (target) {
+  // We must check against these specific cases.
+  if (target === undefined || target === null) {
+    throw new TypeError('Cannot convert undefined or null to object');
+  }
+
+  var output = Object(target);
+  for (var index = 1; index < arguments.length; index++) {
+    var source = arguments[index];
+    if (source !== undefined && source !== null) {
+      for (var nextKey in source) {
+        if (source.hasOwnProperty(nextKey)) {
+          output[nextKey] = source[nextKey];
+        }
+      }
+    }
+  }
+  return output;
+};
+```
+
+## es 6 应用
 ### 箭头函数，函数参数默认值及解析构
 ```js
 wx.request({

@@ -55,3 +55,4 @@ Run: `npm shrinkwrap`
 This allows you to pin the dependencies of your project to the specific version you’re currently using within your `node_modules` directory. When you run `npm install` and there is a `npm-shrinkwrap.json` present, it will override the listed dependencies and any semver ranges in package.json.
 ## References
 * https://blog.risingstack.com/nodejs-at-scale-npm-best-practices/
+* https://nodesource.com/blog/seven-more-npm-tricks-to-knock-your-wombat-socks-off
