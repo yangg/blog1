@@ -8,7 +8,7 @@ back: css-scroll-snap-points
 #page { width: 100%; }
 .snap-slider {
   overflow-x: auto;
-  
+
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: mandatory;
 
@@ -19,10 +19,10 @@ back: css-scroll-snap-points
   }
   &__item {
     scroll-snap-coordinate: 50% 0%;
-    
+
     display: table-cell;
     line-height: 150px; font-size: 2em;
-    
+
     &:not(:first-child) {
       border-left: 1px solid #ccc;
     }
@@ -70,8 +70,6 @@ back: css-scroll-snap-points
     //  if(!supported)
     //    document.write('<script src="' + src + '" async ></' + 'script>');
     // }
-    // addScript('https://o8hio0x77.qnssl.com/src/polyfills/polyfill.js');
-    // addScript('https://o8hio0x77.qnssl.com/src/polyfills/scrollsnap.js');
   } else {
     document.getElementById('cannot_detect').style.display = 'block';
   }

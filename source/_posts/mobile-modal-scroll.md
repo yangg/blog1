@@ -51,7 +51,7 @@ body.modal-open {
 [完整的示例](/demo/modal-scroll.html)
 
 ## document.scrollingElement
-因为浏览器获取和设置 scrollTop 存在兼容性，为了简化上面的示例，我直接使用了 document.scrollingElement 这个[新标准](https://developer.mozilla.org/en/docs/Web/API/document/scrollingElement)，对于不支持的浏览器我写了个 [polyfill document.scrollingElement.js](/demo/polyfills/document.scrollingElement.js)
+因为浏览器获取和设置 scrollTop 存在兼容性，为了简化上面的示例，我直接使用了 document.scrollingElement 这个[新标准](https://developer.mozilla.org/en/docs/Web/API/document/scrollingElement)，对于不支持的浏览器我写了个 [polyfill document.scrollingElement.js](/demo/src/polyfills/document.scrollingElement.js)
 
 ## 参考
 * https://github.com/twbs/bootstrap/issues/15852
