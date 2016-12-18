@@ -9,7 +9,7 @@ tags:
 今天看到一篇文章 [Use Cases For CSS Vertical Media Queries][1]，觉得不错，总结记录一下
 
 ## 做展示页时高屏幕内容不够也显示满屏
-![](https://o8hio0x77.qnssl.com/i/2016-08-02_sectioning-content.jpg)
+![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-08-02_sectioning-content.jpg)
 ```scss
 @media (min-height: 400px) {
     .section {
@@ -20,7 +20,7 @@ tags:
 
 <!--more-->
 ## 固定头或脚只在屏幕够高的情况下固定
-![](https://o8hio0x77.qnssl.com/i/2016-08-02_fixed-footer.jpg)
+![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-08-02_fixed-footer.jpg)
 
 ```scss
 @media (min-height: 600px) {
@@ -33,7 +33,7 @@ tags:
 
 
 ## 移动端的菜单在横屏（高度较小）时，显示两列
-![](https://o8hio0x77.qnssl.com/i/2016-08-02_mobile-menu-solution.jpg)
+![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-08-02_mobile-menu-solution.jpg)
 
 更多详情见 References
 

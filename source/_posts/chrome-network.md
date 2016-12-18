@@ -5,7 +5,7 @@ tags: [Chrome, 性能]
 ---
 ## 页面加载及渲染过程快照
 点击网络面板左上角的第三个摄像机图标按钮，进入录制模式，刷新后就可以录制页面加载渲染过程了（网络加载过快也可以在 `No throttling` 那里选择限制网络为 3G）
-![chrome network screenshot](https://o8hio0x77.qnssl.com/i/2016-09-24_chrome-network-screenshot.png)
+![chrome network screenshot](https://o8hio0x77.qnssl.com/blog/2016/i/2016-09-24_chrome-network-screenshot.png)
 录制完成结果如上图，每个快照上面有对应的时间，鼠标移动到每一个快照上时，相应的时间点也在下面的 Timeline 里显示。
 双击即可打开查看快照时页面的渲染状况，按右方向键可以切换到下一张
 

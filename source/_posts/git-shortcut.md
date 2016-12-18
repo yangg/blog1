@@ -37,6 +37,6 @@ g - st              # show status of Main
 npm install -g git-shortcut
 ```
 
-![git-shortcut usage](https://o8hio0x77.qnssl.com/i/brook_git-shortcut.gif)
+![git-shortcut usage](https://o8hio0x77.qnssl.com/blog/2016/i/brook_git-shortcut.gif)
 
 更多信息请直接查看 https://github.com/yangg/git-shortcut

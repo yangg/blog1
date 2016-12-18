@@ -23,9 +23,9 @@ Apps/Mjuanpi/Conf/config.php: filter: nocache
   clean = sed -e \"s/HTML_CACHE_ON' => false/HTML_CACHE_ON' => true/g\"
 ```
 The "smudge" filter is run on checkout:
-![smudge filter](https://o8hio0x77.qnssl.com/i/2016/09/smudge.png)
+![smudge filter](https://o8hio0x77.qnssl.com/blog/2016/i/smudge.png)
 The "clean" filter is run when files are staged:
-![clean filter](https://o8hio0x77.qnssl.com/i/2016/09/clean.png)
+![clean filter](https://o8hio0x77.qnssl.com/blog/2016/i/clean.png)
 
 ## References
 * https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes

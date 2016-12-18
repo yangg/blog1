@@ -65,7 +65,7 @@ sed '3,6 {/This/{/fish/d}}'
 [USEFUL ONE-LINE SCRIPTS FOR SED (Unix stream editor)](http://sed.sourceforge.net/sed1line.txt)
 
 ### 快速学习
-{% link_image https://o8hio0x77.qnssl.com/i/2016-10-10-183345_1216088706.png "sed 快速学习" %}
+{% link_image https://o8hio0x77.qnssl.com/blog/2016/i/2016-10-10-183345_1216088706.png "sed 快速学习" %}
 
 ## [awk tutorial](http://coolshell.cn/articles/9070.html)
 [The GNU Awk User's Guide](http://www.gnu.org/software/gawk/manual/gawk.html)
@@ -129,4 +129,4 @@ history | awk '{print $2}' | sort | uniq -c | sort -rn | head
 [《SED 单行脚本快速参考》的 awk 实现](http://luy.li/2009/12/07/sed_awk/)
 
 ### 快速学习
-{% link_image https://o8hio0x77.qnssl.com/i/2016-10-10-183345_1216088794.png "awk 快速学习" %}
+{% link_image https://o8hio0x77.qnssl.com/blog/2016/i/2016-10-10-183345_1216088794.png "awk 快速学习" %}

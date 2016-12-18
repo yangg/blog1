@@ -22,7 +22,7 @@ tags: [weapp, weixin, es6]
 
 ## 公用组件
 项目目录里新建 components ，按类似 pages 目录结构，将每个组件的模板，样式和 js 文件放在同一个文件夹
-![微信小程序组件目录结构](https://o8hio0x77.qnssl.com/i/2016-11-12-075312.jpg)
+![微信小程序组件目录结构](https://o8hio0x77.qnssl.com/blog/2016/i/2016-11-12-075312.jpg)
 * 模板可以直接 `<include/>` 或者需要传值的使用 `<import/>` + `<template></template>`
 * 样式使用 `@import` 导入
 * js 使用 `require` 引入到页面，然后使用下面的 [mergePage](#mergePage) 来加载到页面对象中。
