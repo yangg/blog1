@@ -46,6 +46,28 @@ body.modal-open {
 ```
 如果只是上面的 css，滚动条的位置同样会丢失
 所以如果需要保持滚动条的位置需要用 js 保存滚动条位置关闭的时候还原滚动位置
+```js
+/**
+  * ModalHelper helpers resolve the modal scrolling issue on mobile devices
+  * https://github.com/twbs/bootstrap/issues/15852
+  * requires document.scrollingElement polyfill https://uedsky.com/demo/src/polyfills/document.scrollingElement.js
+  */
+var ModalHelper = (function(bodyCls) {
+  var scrollTop;
+  return {
+    afterOpen: function() {
+      scrollTop = document.scrollingElement.scrollTop;
+      document.body.classList.add(bodyCls);
+      document.body.style.top = -scrollTop + 'px';
+    },
+    beforeClose: function() {
+      document.body.classList.remove(bodyCls);
+      // scrollTop lost after set position:fixed, restore it back.
+      document.scrollingElement.scrollTop = scrollTop;
+    }
+  };
+})('modal-open');
+```
 这样上面3个缺点都解决了，至此滚动穿透就**完美解决**了
 
 [完整的示例](/demo/modal-scroll.html)

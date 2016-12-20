@@ -25,8 +25,10 @@ body.modal-open {
   <a class="js-open-modal" href="javascript:">Open Modal</a>
   <div style="height:400px">
     <div>请使用手机浏览</div>
-    <img src="https://www.uedsky.com/qr?desktop-only=1"/></div>
-  <a class="js-open-modal" href="javascript:">Open Modal 2</a>
+    <img src="https://www.uedsky.com/qr?desktop-only=1"/>
+  </div>
+  <a class="js-open-modal" href="javascript:">Open Modal 2 (restore scrolling position)</a>
+  <div style="height:400px"></div>
 </div>
 <div id="modal" class="modal">
   <div class="modal-frame">
@@ -48,19 +50,34 @@ body.modal-open {
 </div>
 <script>
 (function() {
-  // https://github.com/twbs/bootstrap/issues/15852
-  var scrollTop = 0;
+  /**
+   * ModalHelper helpers resolve the modal scrolling issue on mobile devices
+   * https://github.com/twbs/bootstrap/issues/15852
+   * requires document.scrollingElement polyfill https://uedsky.com/demo/src/polyfills/document.scrollingElement.js
+   */
+  var ModalHelper = (function(bodyCls) {
+    var scrollTop;
+    return {
+      afterOpen: function() {
+        scrollTop = document.scrollingElement.scrollTop;
+        document.body.classList.add(bodyCls);
+        document.body.style.top = -scrollTop + 'px';
+      },
+      beforeClose: function() {
+        document.body.classList.remove(bodyCls);
+        // scrollTop lost after set position:fixed, restore it back.
+        document.scrollingElement.scrollTop = scrollTop;
+      }
+    };
+  })('modal-open');
+
   function openModal() {
-    scrollTop = document.scrollingElement.scrollTop;
-    document.body.classList.add('modal-open');
-    document.body.style.top = -scrollTop + 'px';
     document.getElementById('modal').style.display = 'block';
+    ModalHelper.afterOpen();
   }
   function closeModal() {
+    ModalHelper.beforeClose();
     document.getElementById('modal').style.display = 'none';
-    document.body.classList.remove('modal-open');
-    // scrollTop lost after set position:fixed, reset it back.
-    document.scrollingElement.scrollTop = scrollTop;
   }
   var btns = document.querySelectorAll('.js-open-modal');
   btns[0].onclick = openModal;
