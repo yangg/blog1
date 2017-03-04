@@ -9,7 +9,7 @@ lazyload 时利用 :after 显示加载效果和加载失败效果
 <!-- more -->
 ## 效果
 
-![clipboard.png](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12:38:05.jpg)
+![clipboard.png](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12_38_05.jpg)
 
 [查看demo](http://codepen.io/yangg/pen/bpJayx/)
 
@@ -17,7 +17,7 @@ lazyload 时利用 :after 显示加载效果和加载失败效果
 HTML 结构如下：
 ```html
 <a href="javascript:" class="img-wrap img-placeholder">
-  <img data-src="https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12:38:05.jpg" />
+  <img data-src="https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12_38_05.jpg" />
 </a>
 ```
 ```scss

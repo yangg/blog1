@@ -6,7 +6,7 @@ tags:
 - css3
 ---
 ## 预览
-![jagged border](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12:01:41.jpg)
+![jagged border](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12_01_41.jpg)
 动态移动边框
 ![动态移动边框](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_border-1.gif)
 <!-- more -->
@@ -66,7 +66,7 @@ tags:
 ```
 
 调整各边框的宽度可以得到[更多下面这种形状](http://nicolasgallagher.com/pure-css-speech-bubbles/demo/)
-![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12:02:20.jpg)
+![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12_02_20.jpg)
 
 
 ## 小箭头 - transform
@@ -86,11 +86,11 @@ tags:
 ```
 
 再加上 border-radius 也可以做出下面这种[圆角箭头按钮](http://codepen.io/yangg/pen/VLwyeY)
-[![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12:02:39.jpg)](http://codepen.io/yangg/pen/VLwyeY)
+[![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12_02_39.jpg)](http://codepen.io/yangg/pen/VLwyeY)
 
 ## Image Placeholder - :before
 见另一篇文章 {% post_link css-none-image-loading-error %}
 
 ## 投影效果 - :before + box-shadow
-![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12:02:42.jpg)
+![](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-09_12_02_42.jpg)
 See [CSS drop-shadows without images](http://nicolasgallagher.com/css-drop-shadows-without-images/demo/)

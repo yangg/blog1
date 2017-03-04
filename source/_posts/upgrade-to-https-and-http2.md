@@ -53,7 +53,7 @@ add_header      Strict-Transport-Security max-age=31536000;
 
 ## 部署结果查看
 Chrome Devtools -> Network 添加 Protocol 列
-![uedsky.com http2](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-11_10:42:38.jpg)
+![uedsky.com http2](https://o8hio0x77.qnssl.com/blog/2016/i/2016-06-11_10_42_38.jpg)
 ## 安全测试和评分
 * https://mozilla.github.io/http-observatory-website/
 * https://www.ssllabs.com/ssltest/index.html
