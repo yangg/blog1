@@ -1,0 +1,22 @@
+---
+title: Phishing demo
+layout: demo
+date: 2017-03-20 14:46:05
+---
+.text-center#container
+  | Previous tab had going to my github page. You need <code>rel="noopener noreferrer"</code>, <br/>
+  | see <a href="https://dev.to/ben/the-targetblank-vulnerability-by-example">The target="_blank" vulnerability</a>
+script.
+(function() {
+  var phishingUrl = 'https://github.com/yangg'
+  if(window.opener) {
+    opener.location = phishingUrl
+  } else {
+    // https://tkvern.com/20170228/论假百度钓鱼网站的实现过程/
+    history.pushState(null, null, null)
+    window.onpopstate = function() {
+      location.replace(phishingUrl)
+    }
+    document.getElementById('container').innerHTML = 'Back to see where the previous page?'
+  }
+})()
