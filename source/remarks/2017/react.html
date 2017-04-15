@@ -1,0 +1,317 @@
+
+---
+layout: remark
+title: React 小促系统总结
+date: 2017-04-13 16:00
+---
+
+class: center, middle
+
+# React 小促系统总结
+
+.footnote[前端H5 - 杨光]
+---
+
+## Topics
+* ES latest
+* redux
+* 小促系统基本架构
+---
+
+## ES latest
+
+--
+
+* ES 6 class
+* class property
+* decorator
+
+---
+
+## es 6 class
+```js
+class App extends React.component {
+  constructor(props, context) {
+    super(...arguments)
+    // bad
+    // super(props)
+  }
+  start() {
+  }
+}
+```
+---
+class: center
+## decorator
+
+装饰器（Decorator）是一个函数，用来修改类(函数)的行为
+
+装饰器对类的行为的改变，是代码编译时发生的，而不是在运行时
+
+---
+```js
+function testable(target) {
+  target.isTestable = true;
+}
+
+@testable
+class MyTestableClass {}
+
+console.log(MyTestableClass.isTestable) // true
+// equals
+```
+--
+equals
+```js
+MyTestableClass = testable(MyTestableClass)
+```
+
+---
+```js
+// mixins.js
+export function mixins(...list) {
+  return function (target) {
+    Object.assign(target.prototype, ...list)
+  }
+}
+
+// main.js
+import { mixins } from './mixins'
+
+const Foo = {
+  foo() { console.log('foo') }
+};
+
+@mixins(Foo)
+class MyClass {}
+
+let obj = new MyClass();
+obj.foo() // 'foo'
+```
+???
+修改原型
+---
+class: 
+
+## redux
+--
+
+* Provider
+* reducers
+* connect
+* actions
+* connect -> dispatch(action)
+
+---
+
+* `Provider`: global data store
+
+```jsx
+import { Provider } from 'react-redux'
+ReactDOM.render((
+  <Provider store={store} >
+    <ComposerApp />
+  </Provider>
+), document.getElementById('root'))
+```
+---
+* `reduers`: data structure
+
+```js
+export default combineReducers({
+  activeComponentId,
+  propertyPanels
+})
+
+const activeComponentId = (state = null, action) => {
+  switch (action.type) {
+    case ACTIVE_COMPONENT:
+      return action.id
+    default:
+      return state
+  }
+}
+```
+
+---
+
+```js
+const propertyPanels = (state = [], action) => {
+  switch (action.type) {
+    case ADD_PROPERTYPANEL:
+      return state.concat(action.id)
+    case REMOVE_PROPERTYPANEL:
+      let newState = without(state, action.id)
+      return newState
+    default:
+      return state
+  }
+}
+
+export default propertyPanels
+
+```
+---
+
+* `connect`: map data in store to props
+
+`connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])`
+
+--
+```js
+// core/DesignView.js
+@connect(({ components, globals }) => ({ components, modalEditing: globals.modalEditing }), { addComponent, sortComponents })
+class DesignView extends React.Component { }
+```
+--
+equals
+```js
+DesignView = connect(...)(DesignView)
+```
+
+---
+
+```js
+// core/PropertyPanel.js
+@connect((state, ownProps) => {
+  const com = getComponent(state, ownProps.id)
+  const templateInfo = com && (com.ctype === 'Template') && state.templates.find(t => t.id === com.templateId)
+  const customId = com && (com.ctype === 'Custom') && com.templateId
+  return {
+    templateInfo,
+    customId,
+    componentInfo: com ? { ctype: com.ctype, id: com.id, cid: com.cid } : false
+  }
+})
+```
+
+---
+
+* `actions`: update data
+
+```js
+export const updateComponent = (id, keyPath, val) => {
+  return {
+    type: ActionTypes.UPDATE_COMPONENT,
+    id,
+    keyPath,
+    val
+  }
+}
+```
+
+---
+
+* `dispatch`: call actions
+
+```js
+import { addTemplate } from '../actions/template'
+
+this.props.dispatch(addTemplate(t))
+```
+---
+
+* `redux-thunk`: action return a function instead `object`
+
+```js
+function createThunkMiddleware(extraArgument) {
+  return ({ dispatch, getState }) => next => action => {
+    if (typeof action === 'function') {
+      return action(dispatch, getState, extraArgument);
+    }
+
+    return next(action);
+  };
+}
+```
+---
+```js
+export const saveComponents = () => (dispatch, getState) => {
+  let filteredComponent = getState().components.filter(componentFilter, dispatch)
+  dispatch(updateGlobal('IS_SAVING', true))
+  save({
+    components_config: filteredComponent
+  }).then(json => {
+    if (json.code === 1000) {
+      dispatch(updateGlobal('IS_SAVING', false))
+      notify(json.msg, 'success')
+    } else {
+      throw new Error(json.msg)
+    }
+  }).catch(err => {
+    dispatch(updateGlobal('IS_SAVING', false))
+    notify(err.message || err)
+  })
+}
+```
+
+---
+[![](https://ooo.0o0.ooo/2017/04/13/58ef517d2a229.png)](https://ooo.0o0.ooo/2017/04/13/58ef517d2a229.png)
+
+---
+
+## 小促系统基本架构
+
+--
+* 组件的结构
+* 可配置的属性
+
+---
+
+```jsx
+@property()
+export default class DateTime extends React.Component {
+  updateValue = (date) => {
+    if (date && !isNaN(date.valueOf())) {
+      this.setValue(date.valueOf())
+    } else {
+      this.setValue(null)
+    }
+  }
+  render () {
+    return (
+      <div className='input\__group'>
+        <label className='input\__header'>{this.props.label}</label>
+        <div className='input__body'>
+          <DateTimePicker value={this.props.value}
+            minDate={this.props.minDate}
+            placeholder={this.props.placeholder}
+            onChange={this.updateValue} />
+        </div>
+      </div>
+    )
+  }
+}
+```
+---
+
+```jsx
+export default function property (moreProps = []) {
+  return function (targetClass) {
+    mixin(PropHelper)(targetClass)
+    return connect((state, ownProps) => {
+      let com = getComponent(state, ownProps.componentInfo.id)
+      let defaultVal = ''
+      const stateMap = moreProps.reduce((map, k) => {
+        map[k] = state[k]
+        return map
+      }, {})
+      return {
+        ...stateMap,
+        value: dot2val.get(com, ownProps.keyPath, defaultVal)
+      }
+    })(targetClass)
+  }
+}
+```
+--
+PropHelper
+* setValue
+* renderProperty
+---
+
+
+### 
+---
+class: center, middle
+## Thank You!

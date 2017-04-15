@@ -1,0 +1,372 @@
+
+title: Web 前端构建工具
+layout: remark
+date: 2017-03-13 16:00
+---
+class: center, middle
+
+# Web 前端构建工具
+
+.footnote[前端H5 - 杨光]
+---
+
+说到构建工具，我往往会在前面加「自动化」三个字，因为构建工具就是**用来让我们不再做机械重复的事情，解放我们的双手的**
+* 压缩JS
+* 编译 scss（less）并 autoperfixer + 压缩
+* ...
+
+--
+
+常见的构建工具有： gruntjs, gulpjs, webpack
+
+--
+
+国内的也有：百度的FIS
+
+---
+## Topics
+
+* nodejs：现代工业化前端的基础
+* npm：前端模块管理
+* gulpjs：基于流的自动化构建工具
+* webpack：前端资源模块化管理和打包工具
+
+--
+* *eslint：避免低级错误和统一代码的风格*
+
+---
+
+## nodejs
+--
+
+* npm install
+  * `--save` vs `--save-dev` vs `-g`
+  * `npm i --production` or `NODE_ENV=production npm i`
+---
+
+* Speed up `npm install`
+
+* use nrm
+  ```console
+  npm i -g nrm
+  nrm use taobao
+  ```
+* `~/.npmrc`
+
+  ```console
+  registry=https://registry.npm.taobao.org/
+  sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+  phantomjs_cdnurl=https://npm.taobao.org/mirrors/phantomjs
+  electron_mirror=https://npm.taobao.org/mirrors/electron/
+  fsevents_binary_host_mirror=https://npm.taobao.org/mirrors/fsevents/
+  ```
+---
+
+* script
+  * npm start
+  * npm test
+  * npm run ...
+
+```js
+{
+  // ...
+  "scripts": {
+    "build": "node index.js",
+    "test": "mocha", // $PATH env node_modules/.bin/
+    "dev": "NODE_ENV=development node index.js"
+  }
+}
+```
+
+---
+
+## GulpJS
+
+--
+
+* Installation
+* gulpfile.js
+
+---
+### Installation
+
+```bash
+npm install gulp-cli -g
+npm install gulp -D
+touch gulpfile.js
+```
+---
+### gulpfile.js
+
+```js
+var gulp = require('gulp')
+```
+
+--
+```js
+var uglify = require('gulp-uglify')
+
+gulp.task('script', function(){
+  return gulp.src('src/script/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('src/script'))
+});
+```
+
+---
+```js
+var sass = require('gulp-sass')
+var minifyCSS = require('gulp-csso')
+var postcss = require('postcss')
+var autoprefixer = require('autoprefixer')
+
+gulp.task('style', function(){
+  return gulp.src('src/scss/*.scss')
+    .pipe(sass())
+    .pipe(postcss([ autoprefixer(), pxtorem(...) ]))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('build/css'))
+});
+
+gulp.task('default', [ 'script', 'style' ]);
+```
+
+---
+
+## Webpack
+![](https://webpack.js.org/bf093af83ee5548ff10fef24927b7cd2.svg)
+* Installation
+* webpack.config.js
+---
+
+### Installation
+```console
+npm install webpack --save-dev
+```
+
+---
+```js
+var path = require('path');
+var webpack = require("webpack");
+
+module.exports = {
+  entry: {
+    app: './app/index.js',
+  },
+  module: {
+    rules: [
+      // babel-loader
+      // scss-loader
+      // ...
+    ]
+  },
+  plugins: [
+  	// ...
+  ],
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+}
+```
+
+---
+
+* webpack-merge
+
+```js
+{
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ]
+}
+{
+  entry: ...
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin()
+  ]
+}
+```
+
+---
+
+* babel-loader
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      use: [ 'babel' ],
+      include: paths
+    }
+  ]
+}
+```
+```js
+resolveLoader: {
+  moduleExtensions: ['-loader']
+}
+```
+---
+
+* scss-loader
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.scss$/,
+      use: ['style', config.cssLoader, 'postcss', 'sass'],
+      include: paths
+    }
+  ]
+}
+
+// postcss.config.js
+module.exports = {
+  plugins: [
+    require('autoprefixer')({}),
+    require('postcss-pxtorem')({
+      rootValue: 46.875,
+      propWhiteList: []
+    })
+  ]
+}
+```
+
+---
+
+* extract-scss
+
+```js
+let extractCSS = new ExtractTextPlugin('styles/[name].[chunkhash].css')
+return {
+  module: {
+    rules: [
+      // Extract CSS during build
+      {
+        test: /\.scss$/,
+        loader: extractCSS.extract([config.cssLoader, 'postcss', 'sass']),
+        include: paths
+      }
+    ]
+  },
+  plugins: [
+    // Output extracted CSS to a file
+    extractCSS
+  ]
+}
+```
+
+---
+
+* dev-server
+
+```js
+devServer: {
+  hot: true,
+  inline: true
+  historyApiFallback: true,
+  proxy: {
+    '/api': {
+      target: 'http://upload.juancdn.com',
+      changeOrigin: true
+    },
+    '/83': {
+      target: 'http://837090d05d34a16mkt.juanpi.org',
+      changeOrigin: true,
+      pathRewrite: {'^/83': ''}
+    }
+  }
+}
+```
+
+---
+
+## Linter
+--
+
+* eslint Config
+	* Git hook (pre-commit)
+	* Editor config
+* Usage
+---
+
+### Git hook
+--
+
+* npm install --save-dev [pre-commit](https://github.com/observing/pre-commit)  [lint-staged](https://github.com/okonet/lint-staged)  [eslint](http://eslint.org)
+
+--
+
+```js
+"scripts": {
+  "lint": "lint-staged"
+},
+"lint-staged": {
+  "*.js": [
+    "eslint --fix --quiet",
+    "git add"
+  ]
+},
+"pre-commit": [
+  "lint"
+]
+// npm run lint -- file1.js file2.js
+```
+---
+
+* Editor config
+	* vscode: eslint
+	* Sublime Text: SublimeLinter + SublimeLinter-contrib-eslint
+---
+
+### Usage
+* .eslintrc
+
+```yaml
+env:
+  browser: true
+extends: "eslint:recommended"
+globals:
+  act: true
+  Handlebars: true
+rules:
+  complexity: [warn, 10]
+  no-undef: [warn]
+```
+
+---
+
+* 少用全局变量，使用 `window.` 来赋值和访问全局变量
+
+```js
+  // 赋值
+  window.act = {...}
+  window.goLogin = function() {
+  }
+  // 访问
+  var url = window.__URL_JP__ + '/checkout'
+  ```
+---
+
+* 使用 `eslint-disable` 来禁用某些[规则](http://eslint.org/docs/user-guide/configuring#configuring-rules)
+
+```js
+  /* eslint-disable no-unused-vars */
+  var __ACTSTATIC__ = 'http://act.juancdn.com',
+  ...
+      __URL_ACT_JUANPI__='http://pact.juanpi.com/';
+  /* eslint-enable no-unused-vars */
+  
+  alert('foo'); // eslint-disable-line
+
+  // eslint-disable-next-line
+  alert('foo');
+  ```
+
+---
+class: center, middle
+
+## Thank you

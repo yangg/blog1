@@ -1,0 +1,10 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "search.exclude": {
+    "db.json": true,
+    "public": true
+  },
+  "files.associations": {
+    "**/remarks/**/*.html": "markdown"
+  }
+}

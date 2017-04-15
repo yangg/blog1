@@ -53,7 +53,7 @@ body.modal-open {
   /**
    * ModalHelper helpers resolve the modal scrolling issue on mobile devices
    * https://github.com/twbs/bootstrap/issues/15852
-   * requires document.scrollingElement polyfill https://uedsky.com/demo/src/polyfills/document.scrollingElement.js
+   * requires document.scrollingElement polyfill https://github.com/yangg/scrolling-element
    */
   var ModalHelper = (function(bodyCls) {
     var scrollTop;
@@ -91,7 +91,7 @@ body.modal-open {
    if(!supported)
      document.write('<script src="' + src + '" async ></' + 'script>');
   }
-  addScript('src/polyfills/document.scrollingElement.js', document.scrollingElement);
+  addScript('../src/polyfills/document.scrollingElement.js', document.scrollingElement);
 })();
 </script>
   
