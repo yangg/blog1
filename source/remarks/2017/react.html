@@ -13,12 +13,12 @@ class: center, middle
 ---
 
 ## Topics
-* ES latest
+* ES Next
 * redux
 * 小促系统基本架构
 ---
 
-## ES latest
+## ES Next
 
 --
 
@@ -171,6 +171,8 @@ DesignView = connect(...)(DesignView)
 
 ---
 
+### Complicated mapStateToProps
+
 ```js
 // core/PropertyPanel.js
 @connect((state, ownProps) => {
@@ -246,7 +248,7 @@ export const saveComponents = () => (dispatch, getState) => {
 ```
 
 ---
-[![](https://ooo.0o0.ooo/2017/04/13/58ef517d2a229.png)](https://ooo.0o0.ooo/2017/04/13/58ef517d2a229.png)
+[![redux](https://o8hio0x77.qnssl.com/blog/2017/remarks/redux.png)](https://o8hio0x77.qnssl.com/blog/2017/remarks/redux.png)
 
 ---
 
@@ -257,6 +259,26 @@ export const saveComponents = () => (dispatch, getState) => {
 * 可配置的属性
 
 ---
+
+### 组件的数据结构
+```js
+{
+  components: [
+    { id: xx, ctype: 'Clock', endTime: 12312312 },
+    { id: yy, ctype: 'Image', ...},
+    ...
+  ]
+}
+```
+--
+
+![react components](https://o8hio0x77.qnssl.com/blog/2017/remarks/react-component-list.png)
+
+
+---
+
+### 可配置的属性
+--
 
 ```jsx
 @property()
