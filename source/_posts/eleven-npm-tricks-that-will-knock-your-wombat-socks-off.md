@@ -56,3 +56,4 @@ This allows you to pin the dependencies of your project to the specific version 
 ## References
 * https://blog.risingstack.com/nodejs-at-scale-npm-best-practices/
 * https://nodesource.com/blog/seven-more-npm-tricks-to-knock-your-wombat-socks-off
+* https://nodesource.com/blog/configuring-your-npmrc-for-an-optimal-node-js-environment

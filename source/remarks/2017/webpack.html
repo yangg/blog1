@@ -261,13 +261,41 @@ return {
 
 ---
 
+* dynamic import
+
+安装 babel plugin [syntax-dynamic-import](https://www.npmjs.com/package/babel-plugin-syntax-dynamic-import)，并修改 .babelrc
+```json
+{
+  "plugins": ["syntax-dynamic-import"]
+}
+```
+
+--
+修改 webpack 配置，添加
+```js
+output: {
+  chunkFilename: '[name].chunk.js',
+}
+```
+
+--
+在代码中就可以直接使用 `import` 了
+```js
+const pageAdd = import(/* webpackChunkName: "pages/add" */'../pages/add').then(m => m.default)
+// webpack 2.4 新功能，使用注释指定 chunk name
+// 返回 Promise，es2015 需要调用模块的 "default"
+```
+
+
+---
+
 * dev-server
 
 ```js
 devServer: {
   hot: true,
   inline: true
-  historyApiFallback: true,
+  historyApiFallback: true, // SPA
   proxy: {
     '/api': {
       target: 'http://upload.juancdn.com',

@@ -41,6 +41,33 @@ class App extends React.component {
 }
 ```
 ---
+
+## class property
+
+```js
+class Hello extends React.Component {
+  constructor () {
+    super(...arguments)
+    this.state = {}
+
+    // this.sayHello = this.sayHello.bind(this)
+  }
+  // sayHello() { ... }
+  render () {
+    return (
+      <button onClick={this.sayHello}>Hello, {this.state.name}</button>
+    )
+  }
+  sayHello = () => {
+    this.setState({
+      name: 'Brook'
+    })
+  }
+}
+```
+需要安装 babel plugin [transform-class-properties](https://www.npmjs.com/package/babel-plugin-transform-class-properties) (create-react-app 默认已安装并支持)
+---
+
 class: center
 ## decorator
 
