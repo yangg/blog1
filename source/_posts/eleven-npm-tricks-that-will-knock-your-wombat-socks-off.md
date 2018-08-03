@@ -39,6 +39,13 @@ $ npm bugs request
 
 #  Alternatively, if you'd just like to check a module's git repository, type this:
 $ npm repo request
+
+# view package info(version)
+$ npm view request[ version]
+# aliases: v, info, show
+
+# list scripts
+$ npm run
 ```
 
 ## Update outdated dependencies
