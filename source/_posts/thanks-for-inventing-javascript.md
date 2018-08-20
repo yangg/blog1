@@ -3,10 +3,9 @@ title: 神奇的 Javascript
 date: 2018-07-10 14:15:43
 tags:
 - javascript
-- x
 ---
 最近网上流传一张图，就分析了一些解析过程
-![](https://sfault-image.b0.upaiyun.com/166/673/1666736837-5b4bf83e88db0)
+![](https://image-static.segmentfault.com/166/673/1666736837-5b4bf83e88db0)
 
 ## `9 + "1"` => "91"
 

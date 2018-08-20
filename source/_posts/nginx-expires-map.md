@@ -10,7 +10,7 @@ tags:
 ## 莫名其妙的过期时间
 
 在nginx 里设置 expires 时，网上流传的代码都是通过 `$sent_http_content_type` 来 map，大概如下
-```nginx
+```
 map $sent_http_content_type $expires {
     default             60d;
     ~image/             20d
@@ -24,7 +24,7 @@ expires $expires;
 所以猜测**加了 `if-modified-since` header 请求时，nginx 直接返回 304，此时并没有读取文件，导致 `$sent_http_content_type` 为空，所以map 取了 default 的值**
 
 ## 改为通过 `$uri` 后缀来 map 问题解决
-```nginx 
+```
 map $uri $expires {
     default             60d;
     ~\.html$            14d;
