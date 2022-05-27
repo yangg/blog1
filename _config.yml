@@ -98,6 +98,8 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: hermes
+feed:
+  path: feed.xml
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
